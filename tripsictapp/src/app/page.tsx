@@ -13,6 +13,16 @@ import Footer from './components/Footer';
 
 export default function Home() {
   return (
+<<<<<<< HEAD
     <SignUpPage/>
+=======
+    <div>
+      <Navbar />
+      <Features />
+      <Content />
+      <SignInPage /> {/* This will render the SignInPage as well */}
+      <Footer />
+    </div>
+>>>>>>> 72f65a6a053feb638d2afea4b3780923f2a26dbd
   );
 }
