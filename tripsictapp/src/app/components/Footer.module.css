@@ -1,0 +1,12 @@
+/* src/components/Footer.css */
+footer {
+    border-top: solid #D0EFFF;
+    margin: 0px auto 0;
+    background-color: #bbb;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    height: 9vh;
+  }
+  
