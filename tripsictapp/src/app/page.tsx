@@ -9,6 +9,12 @@ import Footer from './components/Footer';
 
 export default function Home() {
   return (
-    <SignInPage/>
+    <div>
+      <Navbar />
+      <Features />
+      <Content />
+      <SignInPage /> {/* This will render the SignInPage as well */}
+      <Footer />
+    </div>
   );
 }
