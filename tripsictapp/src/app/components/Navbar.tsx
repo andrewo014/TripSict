@@ -1,6 +1,6 @@
 // src/components/Navbar.js
 import React from 'react';
-import './Navbar.css'; // Import the specific CSS for the Navbar component
+import styles from './Navbar.module.css';
 
 function Navbar() {
   return (
