@@ -1,0 +1,19 @@
+/* src/components/Content.css */
+.content {
+    background-color: #D0EFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 700px;
+    width: 1200px;
+    margin-top: 40px;
+    margin: 0 auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+  .newUser {
+    margin-right: 50px;
+    text-align: center;
+  }
+  

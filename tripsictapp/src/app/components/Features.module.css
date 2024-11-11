@@ -1,0 +1,21 @@
+/* src/components/Features.css */
+.features {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    gap: 75px;
+  }
+  .icon {
+    margin-bottom: 15px;
+    border: 15px solid #D0EFFF;
+    border-radius: 20%;
+    background-color: #D0EFFF;
+    width: 100px;
+  }
+  .feature {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+  }
+  
