@@ -4,6 +4,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import styles from './SignUpPage.module.css';
+import Link from 'next/link';
 
 interface SignUpPageProps {
   onAddUser: (user: {
@@ -132,8 +133,7 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onAddUser }) => {
         <button type="submit" className={styles.submitButton}>Create Account</button>
       </form>
       <br/>
-      <hr />
-      <a href="/" className={styles.loginPrompt}>Already Have an Account?</a>
+      <Link href="/signin" className={styles.loginPrompt}>Already Have an Account?</Link>
     </main>
   );
 };

@@ -2,14 +2,14 @@
 .pageContent {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: center; /* Center content vertically */
-    min-height: 100vh; /* Full height of the viewport */
-    width: 100%; /* Ensure it takes up the full width */
-    padding: 20px; /* Optional padding */
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh; 
+    width: 100%; 
+    padding: 20px;
     box-sizing: border-box;
-    background-color: #f4f4f4; /* Background color */
-    color: black; /* Set default text color to black */
+    background-color: #f4f4f4;
+    color: black; 
   }
   
   /* The logo and title */
@@ -17,7 +17,7 @@
     font-size: 3rem;
     text-align: center;
     margin: 20px 0;
-    color: black; /* Ensure title text is black */
+    color: black; 
   }
   
   /* Form container */
@@ -25,12 +25,12 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 800px; /* Limit the width of the form */
+    max-width: 800px; 
     background-color: white;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: black; /* Ensure text inside the form is black */
+    color: black; 
   }
   
   /* Input field container */
@@ -42,8 +42,8 @@
   
   /* Label styling */
   .inputLabel {
-    margin-bottom: 5px; /* Space between label and input */
-    color: black; /* Ensure label text is black */
+    margin-bottom: 5px; 
+    color: black; 
   }
   
   /* Input field styling */
@@ -55,7 +55,7 @@
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 15px;
-    color: black; /* Ensure input text is black */
+    color: black; 
   }
   
   /* Input field focus state */
@@ -91,15 +91,15 @@
   
   .eyeIcon {
     cursor: pointer;
-    margin-left: 10px; /* Space between the password field and the icon */
+    margin-left: 10px; 
     color: #0070f3;
-    font-size: 1.2rem; /* Adjust size of the icon */
+    font-size: 1.2rem; 
   }
   
   .homeContainer {
     position: absolute;
-    top: 20px; /* Distance from the top */
-    right: 20px; /* Distance from the right */
+    top: 20px; 
+    right: 20px; 
   }
   
   /* Styling for the "Home" link */
