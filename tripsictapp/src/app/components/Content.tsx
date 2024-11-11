@@ -1,6 +1,6 @@
 // src/components/Content.js
 import React from 'react';
-import './Content.css';
+import styles from './Content.module.css';
 
 function Content() {
   return (

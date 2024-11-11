@@ -1,7 +1,6 @@
 // src/components/Features.js
 import React from 'react';
-import './Features.css';
-
+import styles from './Features.module.css';
 function Features() {
   return (
     <div className="features">
