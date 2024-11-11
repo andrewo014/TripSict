@@ -1,0 +1,132 @@
+/* Container for the entire page */
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    min-height: 100vh; /* Full height of the viewport */
+    width: 100%; /* Full width */
+    padding: 20px;
+    background-color: #f4f4f4; /* Background color */
+    box-sizing: border-box;
+    color: black; /* Set default text color to black */
+  }
+  
+  /* Sign up form container */
+  .signUpForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px; /* Adjust to desired width */
+    width: 100%;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: black; /* Set text color for content inside the form */
+  }
+  
+  /* Form sections (first and last name on the same row) */
+  .name {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .fieldContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  /* Input field label */
+  .inputLabel {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: black; /* Ensure label text is black */
+  }
+  
+  /* Input field styling */
+  .inputField {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Take full width of container */
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    color: black; /* Set text color inside input fields */
+  }
+  
+  /* Input field focus state */
+  .inputField:focus {
+    outline: none;
+    border-color: #0070f3;
+  }
+  
+  /* Submit button styling */
+  .submitButton {
+    background-color: #0070f3;
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submitButton:hover {
+    background-color: #005bb5;
+  }
+  
+  /* Title styles */
+  .welcomeTitle {
+    font-size: 3rem;
+    text-align: center;
+    margin: 20px 0;
+    color: black; /* Ensure title text is black */
+  }
+  
+  /* Separator for "Already have an account" link */
+  .separator {
+    width: 100%;
+    margin: 20px 0;
+    border-top: 1px solid #ccc;
+  }
+  
+  /* Login prompt link */
+  .loginPrompt {
+    text-align: center;
+    font-size: 1rem;
+    color: black; /* Set text color to black for login prompt */
+  }
+  
+  .passwordFieldContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .eyeIcon {
+    cursor: pointer;
+    margin-left: 10px; /* Space between the password field and the icon */
+    color: #0070f3;
+    font-size: 1.2rem; /* Adjust size of the icon */
+  }
+  
+  .homeContainer {
+    position: absolute;
+    top: 20px; /* Distance from the top */
+    right: 20px; /* Distance from the right */
+  }
+  
+  /* Styling for the "Home" link */
+  .homeLink {
+    font-size: 1.2rem;
+    color: #0070f3;
+    text-decoration: none;
+  }
+  
+  .homeLink:hover {
+    text-decoration: underline;
+  }
