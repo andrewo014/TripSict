@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import styles from './SignInPage.module.css';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface SignInPageProps {
   onLogin: (user: { username: string; password: string }) => void;
@@ -36,11 +37,23 @@ const SignInPage: React.FC<SignInPageProps> = ({ onLogin }) => {
   };
 
   return (
+
     <main className={styles.pageContent}>
-    <div className={styles.homeContainer}>
-    <Link href="/" className={styles.homeLink}>Home</Link>
-      </div>
-      <h1 className={styles.welcomeTitle}>Welcome Back to TripTact!</h1>
+
+<header className={styles.navbar}>
+        <div className={styles.logo}>TripSict</div>
+        <Image src="/Images/triptactLogo.jpg" 
+          alt="Triptact Photo Log" 
+          width={80} 
+          height={80} 
+          className={styles.logoImage} 
+        />
+          <Link href="/" passHref>
+          <button className={styles.homeButton}>Home</button>
+          </Link>
+      </header>
+  <div className={styles.nonheadercontent}>
+      <h1 className={styles.welcomeTitle}>Welcome Back to TripSict!</h1>
       <h2 className={styles.welcomeTitle}>Sign In</h2>
       <form className={styles.signInForm} onSubmit={submitHandler}>
         <div className={styles.fieldContainer}>
@@ -79,6 +92,7 @@ const SignInPage: React.FC<SignInPageProps> = ({ onLogin }) => {
       </form>
       <br />
       <Link href="/signup" className={styles.loginPrompt}>New User? Register here</Link>
+      </div>
     </main>
   );
 };

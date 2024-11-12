@@ -63,7 +63,7 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onAddUser }) => {
       <div className={styles.homeContainer}>
         <Link href="/" className={styles.homeLink}>Home</Link>
       </div>
-      <h1 className={styles.welcomeTitle}>Welcome to TripTact!</h1>
+      <h1 className={styles.welcomeTitle}>Welcome to TripSict!</h1>
       <h2 className={styles.welcomeTitle}>Sign Up</h2>
       <form className={styles.signUpForm} onSubmit={submitHandler}>
         <div className={styles.name}>

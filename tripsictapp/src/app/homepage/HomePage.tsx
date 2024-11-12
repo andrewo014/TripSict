@@ -98,11 +98,13 @@ export default function Homepage() {
       </main>
 
       <footer className={styles.bottom}>
+        <div className={styles.footerContent}>
         <Image src="/Images/triptactLogo.jpg" alt="Triptact Photo Log" width={80} height={80} className={styles.logoImage} />
-        <p>About TripSict</p>
-        <p>Founders</p>
-        <p>Help Center</p>
-        <p>Report an Issue</p>
+        <button className={styles.footerButtons}>About Tripsict</button>
+        <button className={styles.footerButtons}>Founders</button>
+        <button className={styles.footerButtons}>Help Center</button>
+        <button className={styles.footerButtons}>Report an issue</button>
+        </div>
       </footer>
     </div>
     </div>
