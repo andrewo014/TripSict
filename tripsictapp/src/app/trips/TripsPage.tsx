@@ -1,6 +1,9 @@
-'use client'; // Add this directive at the top of your file
+'use client';
 import { useState } from 'react';
 import TripForm from './TripForm';
+import Image from 'next/image';
+import styles from './Trip.module.css';
+import Link from 'next/link';
 
 interface Trip {
   id: string;
@@ -29,35 +32,54 @@ const TripsPage: React.FC = () => {
   const editTripHandler = (id: string) => {
     const tripToEdit = trips.find((trip) => trip.id === id);
     if (tripToEdit) {
-      // You can implement your edit form logic here
       console.log('Edit trip:', tripToEdit);
     }
   };
 
   return (
-    <div>
-      <h1>Manage Your Trip Items</h1>
+    <div className={styles.tripPageContainer}>
+      <header className={styles.header}>
+        <div className={styles.logo}>TripSict</div>
+        <Image 
+          src="/Images/triptactLogo.jpg" 
+          alt="Triptact Photo Log" 
+          width={80} 
+          height={80} 
+          className={styles.logoImage} 
+        />
+        <Link href="signin" passHref>
+          <button className={styles.signInButton}>Sign In</button>
+        </Link>
+      </header>
+
+      <h1 className={styles.title}>Manage Your Trip Items</h1>
       <TripForm onAddTrip={addTripHandler} />
 
-      <div>
-        <h2>Trip List</h2>
+      <div className={styles.tripList}>
+        <h2 className={styles.tripListTitle}>Trip List</h2>
         {trips.length === 0 ? (
           <p>No trips added yet.</p>
         ) : (
           <ul>
             {trips.map((trip) => (
-              <li key={trip.id}>
-                <h3>{trip.name}</h3>
-                <p>{trip.date}</p>
-                <p>{trip.description}</p>
-                <p>{trip.location}</p>
-                <button onClick={() => editTripHandler(trip.id)}>Edit</button>
-                <button onClick={() => deleteTripHandler(trip.id)}>Delete</button>
+              <li key={trip.id} className={styles.tripItem}>
+                <h3 className={styles.tripItemTitle}>{trip.name}</h3>
+                <p className={styles.tripItemText}>{trip.date}</p>
+                <p className={styles.tripItemText}>{trip.description}</p>
+                <p className={styles.tripItemText}>{trip.location}</p>
+                <div className={styles.buttonGroup}>
+                  <button onClick={() => editTripHandler(trip.id)} className={styles.editButton}>Edit</button>
+                  <button onClick={() => deleteTripHandler(trip.id)} className={styles.deleteButton}>Delete</button>
+                </div>
               </li>
             ))}
           </ul>
         )}
       </div>
+
+      <footer className={styles.footer}>
+        <p>&copy; 2024 TripSict</p>
+      </footer>
     </div>
   );
 };

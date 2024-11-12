@@ -1,0 +1,140 @@
+/* Main Container */
+.tripPageContainer {
+    background-color: #ffffff;
+    min-height: 100vh;
+    padding: 20px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 10px;
+  }
+  
+  .logo {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .logoImage {
+    border-radius: 50%;
+    margin-left: 10px;
+  }
+  
+  .signInButton {
+    padding: 10px 20px;
+    background-color: #D0EFFF;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    height: 40px;
+  }
+  
+  .title {
+    font-size: 2.5em;
+    margin-top: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .tripForm {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tripList {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+  }
+  
+  .tripListTitle {
+    font-size: 1.8em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .tripItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+  }
+  
+  .tripItemTitle {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    color: #007acc;
+  }
+  
+  .tripItemText {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .editButton, .deleteButton {
+    padding: 8px 12px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+  }
+  
+  .editButton {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .editButton:hover {
+    background-color: #45a049;
+  }
+  
+  .deleteButton {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .deleteButton:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Footer */
+  .footer {
+    border-top: 1px solid #D0EFFF;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #f0f0f0;
+    color: #333;
+    margin-top: 20px;
+  }
+  

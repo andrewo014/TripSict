@@ -5,6 +5,6 @@ import Homepage from "./homepage/HomePage";
 import TripsPage from "./trips/TripsPage";
 export default function Home() {
   return (
-   <Homepage/>
+   <TripsPage/>
   );
 }
