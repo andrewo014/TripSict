@@ -59,9 +59,8 @@ const TripsPage: React.FC = () => {
     <main className={styles.tripPageContainer}>
       <header className={styles.navbar}>
         <button onClick={toggleSidebar} className={styles.sidebarToggleButton}>
-          {isSidebarOpen ? 'Menu' : 'Menu'}
+          {isSidebarOpen ? 'Close Menu' : 'Menu'}
         </button>
-        <div className={styles.logo}></div>
         <Image 
           src="/Images/triptactLogo.jpg" 
           alt="Triptact Photo Log" 
@@ -77,6 +76,15 @@ const TripsPage: React.FC = () => {
       {/* Sidebar */}
       <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''}`}>
         <button onClick={toggleSidebar} className={styles.closeButton}>X</button>
+        
+        <Image 
+          src="/Images/triptactLogo.jpg" 
+          alt="Triptact Photo Log" 
+          width={80} 
+          height={80} 
+          className={styles.sideBarLogo} 
+        />
+        
         <div className={styles.sidebarButtons}>
           <button className={styles.sidebarButton}>Trips</button>
           <button className={styles.sidebarButton}>Notes</button>
@@ -85,10 +93,12 @@ const TripsPage: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.nonHeaderContent}>
-        <h1 className={styles.title}>Your Trips: </h1>
+      <h1 className={styles.welcome}>Welcome Back!</h1>
 
-        <button onClick={toggleFormVisibility} className={styles.logOutButton}>
+      <h4 className={styles.title}>My Trips </h4>
+
+      <div className={styles.nonHeaderContent}>
+        <button onClick={toggleFormVisibility} className={styles.addTripButton}>
           {showForm ? 'Cancel' : editTrip ? 'Edit Trip' : 'Add Trip'}
         </button>
 
@@ -96,7 +106,9 @@ const TripsPage: React.FC = () => {
 
         <div className={styles.tripList}>
           {trips.length === 0 ? (
-            <p>No trips added yet.</p>
+            <div className={styles.noTrips}>
+              <p>No trips added yet.</p>
+            </div>
           ) : (
             <ul>
               {trips.map((trip) => (
@@ -114,11 +126,11 @@ const TripsPage: React.FC = () => {
             </ul>
           )}
         </div>
-
-        <footer className={styles.footer}>
-          <p>&copy; 2024 TripSict</p>
-        </footer>
       </div>
+             
+      <footer className={styles.footer}>
+          <p>&copy; 2024 TripSict</p>
+      </footer>
     </main>
   );
 };

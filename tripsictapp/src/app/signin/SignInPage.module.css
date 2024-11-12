@@ -121,7 +121,6 @@
   .navbar {
     display: flex;
     justify-content: space-between;
-    position: relative;
     align-items: center;
     padding: 10px;
 }

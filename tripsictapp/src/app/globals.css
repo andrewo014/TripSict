@@ -17,5 +17,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: georgia, serif;
+  font-family: 'Comic Sans MS', cursive;
 }
