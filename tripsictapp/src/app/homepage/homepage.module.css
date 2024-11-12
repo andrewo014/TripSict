@@ -1,0 +1,243 @@
+/* HEADER */
+
+.pageContainer {
+    background-color: #ffffff; /* Or any color you prefer */
+    min-height: 100vh; /* Ensures it covers the full viewport */
+    width: 100%;
+    color: black;
+}
+
+.container {
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    padding: 10px;
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.logo {
+    font-size: 60px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.logoImage {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+}
+
+.headerBottom {
+    border-bottom: solid #D0EFFF;
+    width: 70%;
+    margin: 10px auto 0;
+}
+
+/* CLIP ARTS/ICONS */
+
+.feature {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    gap: 75px;
+}
+
+.icon {
+    margin-bottom: 15px;
+    border: 15px solid #D0EFFF;
+    border-radius: 20%;
+    background-color: #D0EFFF;
+    width: 100px;
+}
+
+.icon:hover,
+.feature:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 5%;
+}
+
+/* BUTTONS */
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.registerBtn, .signInBtn, .signIn, .signIn2 {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    height: 75px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 5%;
+    margin-right: 10px;
+}
+
+.registerBtn, .signIn2 {
+    margin-top: 20px;
+}
+
+.registerBtn {
+    background-color: #0099ff;
+    color: #fff;
+}
+
+.signIn2 {
+    background-color: transparent;
+    color: #0099ff;
+    border: 1px solid #0099ff;
+    width: 90px;
+    cursor: pointer;
+}
+
+.signIn {
+    width: 90px;
+    background-color: #D0EFFF;
+    color: black;
+    flex-shrink: 0;
+}
+
+/* MIDDLE IMAGE */
+
+.tripPreview {
+    background-color: #ccc;
+    width: 1000px;
+    height: 579px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tripOptions {
+    font-size: 0.9em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.topBar {
+    background-color: #bbb;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    justify-content: space-between;
+}
+
+.appContainer {
+    width: 700px;
+    background-color: #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.windowControls {
+    display: flex;
+    gap: 8px;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.red {
+    background-color: #ff5f57;
+}
+
+.yellow {
+    background-color: #ffbd2e;
+}
+
+.green {
+    background-color: #28c940;
+}
+
+.navControls {
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+    color: #333;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.content {
+    background-color: #D0EFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 700px;
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    box-sizing: border-box;
+}
+
+.newUser {
+    margin-right: 50px;
+    text-align: center;
+}
+
+/* BOTTOM TEXT */
+
+.introText {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.introText h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.introText p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* FOOTER */
+
+.bottom {
+    border-top: solid #D0EFFF;
+    margin: 0 auto;
+    background-color: #bbb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 9vh;
+}

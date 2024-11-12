@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import styles from './SignInPage.module.css';
+import Link from 'next/link';
 
 interface SignInPageProps {
   onLogin: (user: { username: string; password: string }) => void;
@@ -37,7 +38,7 @@ const SignInPage: React.FC<SignInPageProps> = ({ onLogin }) => {
   return (
     <main className={styles.pageContent}>
     <div className={styles.homeContainer}>
-        <a href="/" className={styles.homeLink}>Home</a>
+    <Link href="/homepage" className={styles.homeLink}>Home</Link>
       </div>
       <h1 className={styles.welcomeTitle}>Welcome Back to TripTact!</h1>
       <h2 className={styles.welcomeTitle}>Sign In</h2>
@@ -77,7 +78,7 @@ const SignInPage: React.FC<SignInPageProps> = ({ onLogin }) => {
         <button type="submit" className={styles.submitButton}>Sign In</button>
       </form>
       <br />
-      <a href="/">New User? Register here</a>
+      <Link href="/signup" className={styles.loginPrompt}>New User? Register here</Link>
     </main>
   );
 };
