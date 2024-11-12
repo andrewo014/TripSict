@@ -49,6 +49,48 @@
     margin: 10px auto 0;
 }
 
+.headerTop {
+    border-bottom: solid #D0EFFF;
+    width: 70%;
+    margin: 10px auto 0;
+}
+
+.itemList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers all elements in each item */
+    text-align: center;  /* Centers text within each item */
+    max-width: 200px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.itemImage {
+    border-radius: 8px;
+    display: block; /* Ensures the image doesn’t shift */
+    margin: 0 auto; /* Centers image horizontally */
+  }
+  
+  .item h3 {
+    font-size: 1.2em;
+    margin-top: 10px;
+  }
+  
+  .item p {
+    font-size: 1em;
+    color: #666;
+  }
+
 /* CLIP ARTS/ICONS */
 
 .feature {

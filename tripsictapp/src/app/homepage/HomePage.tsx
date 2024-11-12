@@ -5,7 +5,17 @@ import Link from 'next/link';
 
 
 export default function Homepage() {
+
+  const items = [
+    { id: 1, image: '/Images/sunnyBeach.jpg', title: 'Sunny Beach', description: 'Enjoy a day at the sunny beach with clear waters.' },
+    { id: 2, image: '/Images/nyc.jpg', title: 'City Adventure', description: 'Discover the vibrant life of the city.' },
+    { id: 3, image: '/Images/mountainRetreat.jpg', title: 'Mountain Retreat', description: 'Relax in the mountains with beautiful scenery.' }
+  ];
+
   return (
+
+    
+
     <div className={styles.pageContainer}>
     <div className={styles.container}>
       <header className={styles.navbar}>
@@ -25,6 +35,21 @@ export default function Homepage() {
       <div className={styles.headerBottom}>
         <div className={styles.intro}>The perfect place to plan your next trip away!</div>
       </div>
+
+      <div className={styles.itemList}>
+            {items.map((item) => (
+              <div key={item.id} className={styles.item}>
+                <Image src={item.image} alt={item.title} width={200} height={200} className={styles.itemImage} />
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.headerTop}>
+        
+      </div>    
+    
 
       <div className={styles.features}>
         <div className={styles.feature}>
