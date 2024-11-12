@@ -15,14 +15,25 @@ interface Trip {
 
 const TripsPage: React.FC = () => {
   const [trips, setTrips] = useState<Trip[]>([]);
+  const [showForm, setShowForm] = useState(false);
+  const [editTrip, setEditTrip] = useState<Trip | null>(null); // Track the trip being edited
 
-  const addTripHandler = (trip: { name: string, date: string, description: string, location: string }) => {
-    const newTrip = {
-      id: Math.random().toString(),
-      ...trip,
-    };
-
-    setTrips((prevTrips) => [...prevTrips, newTrip]);
+  const addTripHandler = (trip: { id?: string; name: string; date: string; description: string; location: string }) => {
+    if (editTrip) {
+      // Update existing trip
+      setTrips((prevTrips) =>
+        prevTrips.map((t) => (t.id === editTrip.id ? { ...t, ...trip, id: editTrip.id } : t))
+      );
+      setEditTrip(null); // Clear edit mode
+    } else {
+      // Add new trip
+      const newTrip = {
+        id: Math.random().toString(),
+        ...trip,
+      };
+      setTrips((prevTrips) => [...prevTrips, newTrip]);
+    }
+    setShowForm(false); // Hide form after submission
   };
 
   const deleteTripHandler = (id: string) => {
@@ -32,8 +43,16 @@ const TripsPage: React.FC = () => {
   const editTripHandler = (id: string) => {
     const tripToEdit = trips.find((trip) => trip.id === id);
     if (tripToEdit) {
-      console.log('Edit trip:', tripToEdit);
+      setEditTrip(tripToEdit); // Set the trip to be edited
+      setShowForm(true); // Show form for editing
     }
+  };
+
+  const toggleFormVisibility = () => {
+    if (editTrip) {
+      setEditTrip(null); // Clear edit mode if form is canceled
+    }
+    setShowForm((prevShowForm) => !prevShowForm);
   };
 
   return (
@@ -47,16 +66,21 @@ const TripsPage: React.FC = () => {
           height={80} 
           className={styles.logoImage} 
         />
-        <Link href="signin" passHref>
-          <button className={styles.signInButton}>Sign In</button>
+        <Link href="/" passHref>
+          <button className={styles.logOutButton}>Log out</button>
         </Link>
       </header>
 
-      <h1 className={styles.title}>Manage Your Trip Items</h1>
-      <TripForm onAddTrip={addTripHandler} />
+      <h1 className={styles.title}>Your Trips: </h1>
+
+      <button onClick={toggleFormVisibility} className={styles.logOutButton}>
+        {showForm ? 'Cancel' : editTrip ? 'Edit Trip' : 'Add Trip'}
+      </button>
+
+      {showForm && <TripForm onAddTrip={addTripHandler} editTrip={editTrip} />}
 
       <div className={styles.tripList}>
-        <h2 className={styles.tripListTitle}>Trip List</h2>
+        
         {trips.length === 0 ? (
           <p>No trips added yet.</p>
         ) : (

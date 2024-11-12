@@ -16,6 +16,7 @@
     width: 100%;
     max-width: 1200px;
     padding: 10px;
+    align-items: center;
   }
   
   .logo {
@@ -28,7 +29,7 @@
     margin-left: 10px;
   }
   
-  .signInButton {
+  .logOutButton {
     padding: 10px 20px;
     background-color: #D0EFFF;
     color: black;
@@ -42,7 +43,7 @@
   .title {
     font-size: 2.5em;
     margin-top: 20px;
-    text-align: center;
+    text-align: left;
     color: #333;
   }
   
@@ -136,5 +137,56 @@
     background-color: #f0f0f0;
     color: #333;
     margin-top: 20px;
+  }
+  
+  /* Trip Form Styling */
+.tripForm {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for form */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tripForm label {
+    display: block;
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .tripForm input,
+  .tripForm textarea,
+  .tripForm button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+  }
+  
+  .tripForm input:focus,
+  .tripForm textarea:focus {
+    outline: none;
+    border-color: #0099ff;
+    background-color: #e6f7ff;
+  }
+  
+  .tripForm button {
+    background-color: #0099ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .tripForm button:hover {
+    background-color: #007acc;
   }
   

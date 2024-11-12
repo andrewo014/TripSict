@@ -27,7 +27,7 @@ export default function Homepage() {
           height={80} 
           className={styles.logoImage} 
         />
-          <Link href="signin" passHref>
+          <Link href="trips" passHref>
           <button className={styles.signIn}>Sign In</button>
           </Link>
       </header>

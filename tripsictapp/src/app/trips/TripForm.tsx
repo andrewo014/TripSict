@@ -1,15 +1,33 @@
-'use client'; // Add this directive at the top of your file
-import { useState, ChangeEvent, FormEvent } from 'react';
+'use client';
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
+import styles from './Trip.module.css';
 
 interface TripFormProps {
-  onAddTrip: (trip: { name: string, date: string, description: string, location: string }) => void;
+  onAddTrip: (trip: { id?: string; name: string; date: string; description: string; location: string }) => void;
+  editTrip?: { id: string; name: string; date: string; description: string; location: string } | null;
 }
 
-const TripForm: React.FC<TripFormProps> = ({ onAddTrip }) => {
+const TripForm: React.FC<TripFormProps> = ({ onAddTrip, editTrip }) => {
   const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
+
+  // Populate form fields if editTrip is provided
+  useEffect(() => {
+    if (editTrip) {
+      setName(editTrip.name);
+      setDate(editTrip.date);
+      setDescription(editTrip.description);
+      setLocation(editTrip.location);
+    } else {
+      // Clear form if no editTrip
+      setName('');
+      setDate('');
+      setDescription('');
+      setLocation('');
+    }
+  }, [editTrip]);
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
@@ -20,15 +38,16 @@ const TripForm: React.FC<TripFormProps> = ({ onAddTrip }) => {
     }
 
     const newTrip = {
+      id: editTrip?.id, // Use existing ID if editing
       name,
       date,
       description,
       location,
     };
 
-    onAddTrip(newTrip);
+    onAddTrip(newTrip); // Pass the trip to parent component
 
-    // Reset the form fields
+    // Reset form fields
     setName('');
     setDate('');
     setDescription('');
@@ -36,7 +55,7 @@ const TripForm: React.FC<TripFormProps> = ({ onAddTrip }) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={styles.tripForm}>
       <label htmlFor="name">Trip Name</label>
       <input
         id="name"
@@ -72,7 +91,7 @@ const TripForm: React.FC<TripFormProps> = ({ onAddTrip }) => {
         required
       />
 
-      <button type="submit">Add Trip</button>
+      <button type="submit">{editTrip ? 'Save Changes' : 'Add Trip'}</button>
     </form>
   );
 };
