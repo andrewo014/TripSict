@@ -38,7 +38,7 @@ const SignInPage: React.FC<SignInPageProps> = ({ onLogin }) => {
   return (
     <main className={styles.pageContent}>
     <div className={styles.homeContainer}>
-    <Link href="/homepage" className={styles.homeLink}>Home</Link>
+    <Link href="/" className={styles.homeLink}>Home</Link>
       </div>
       <h1 className={styles.welcomeTitle}>Welcome Back to TripTact!</h1>
       <h2 className={styles.welcomeTitle}>Sign In</h2>
