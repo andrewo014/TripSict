@@ -1,3 +1,5 @@
+// Page.tsx
+'use client';
 import { useState } from 'react';
 import TripForm from './TripForm';
 import Image from 'next/image';
@@ -22,42 +24,37 @@ const TripsPage: React.FC = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  // Add new or update existing trip
   const addTripHandler = (trip: { id?: string; name: string; date: string; description: string; location: string }) => {
-    setTrips((prevTrips) => {
-      if (editTrip) {
-        return prevTrips.map((t) =>
-          t.id === editTrip.id ? { ...t, ...trip, id: editTrip.id } : t
-        );
-      } else {
-        const newTrip = { id: Math.random().toString(), ...trip }; // Unique ID for new trip
-        return [...prevTrips, newTrip];
-      }
-    });
-    setEditTrip(null); // Clear edit state
-    setShowForm(false); // Hide the form after submitting
+    if (editTrip) {
+      setTrips((prevTrips) =>
+        prevTrips.map((t) => (t.id === editTrip.id ? { ...t, ...trip, id: editTrip.id } : t))
+      );
+      setEditTrip(null);
+    } else {
+      // Generate unique ID with Date.now() and a random number
+      const newTrip = { id: `${Date.now()}-${Math.random()}`, ...trip };
+      setTrips((prevTrips) => [...prevTrips, newTrip]);
+    }
+    setShowForm(false);
   };
 
-  // Delete trip by ID
   const deleteTripHandler = (id: string) => {
     setTrips((prevTrips) => prevTrips.filter((trip) => trip.id !== id));
   };
 
-  // Edit trip by ID
   const editTripHandler = (id: string) => {
     const tripToEdit = trips.find((trip) => trip.id === id);
     if (tripToEdit) {
       setEditTrip(tripToEdit);
-      setShowForm(true); // Show form for editing
+      setShowForm(true);
     }
   };
 
-  // Toggle the form visibility
   const toggleFormVisibility = () => {
     if (editTrip) {
-      setEditTrip(null); // If editing, clear it
+      setEditTrip(null);
     }
-    setShowForm((prevShowForm) => !prevShowForm); // Toggle visibility of form
+    setShowForm((prevShowForm) => !prevShowForm);
   };
 
   return (
