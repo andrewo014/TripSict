@@ -113,19 +113,20 @@ const TripsPage: React.FC = () => {
             </div>
           ) : (
             <ul>
-              {trips.map((trip) => (
-                <li key={trip.id} className={styles.tripItem}>
-                  <h3 className={styles.tripItemTitle}>{trip.name}</h3>
-                  <p className={styles.tripItemText}>{trip.date}</p>
-                  <p className={styles.tripItemText}>{trip.description}</p>
-                  <p className={styles.tripItemText}>{trip.location}</p>
-                  <div className={styles.buttonGroup}>
-                    <button onClick={() => editTripHandler(trip.id)} className={styles.editButton}>Edit</button>
-                    <button onClick={() => deleteTripHandler(trip.id)} className={styles.deleteButton}>Delete</button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+  {trips.map((trip) => (
+    <li key={trip.id} className={styles.tripItem}>
+      <h3 className={styles.tripItemTitle}>{trip.name}</h3>
+      <p className={styles.tripItemText}>{trip.date}</p>
+      <p className={styles.tripItemText}>{trip.description}</p>
+      <p className={styles.tripItemText}>{trip.location}</p>
+      <div className={styles.buttonGroup}>
+        <button onClick={() => editTripHandler(trip.id)} className={styles.editButton}>Edit</button>
+        <button onClick={() => deleteTripHandler(trip.id)} className={styles.deleteButton}>Delete</button>
+      </div>
+    </li>
+  ))}
+</ul>
+
           )}
         </div>
       </div>
