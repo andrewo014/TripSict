@@ -1,5 +1,3 @@
-// Page.tsx
-'use client';
 import { useState } from 'react';
 import TripForm from './TripForm';
 import Image from 'next/image';
@@ -24,37 +22,42 @@ const TripsPage: React.FC = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  // Add new or update existing trip
   const addTripHandler = (trip: { id?: string; name: string; date: string; description: string; location: string }) => {
-    if (editTrip) {
-      setTrips((prevTrips) =>
-        prevTrips.map((t) => (t.id === editTrip.id ? { ...t, ...trip, id: editTrip.id } : t))
-      );
-      setEditTrip(null);
-    } else {
-      // Generate unique ID with Date.now() and a random number
-      const newTrip = { id: `${Date.now()}-${Math.random()}`, ...trip };
-      setTrips((prevTrips) => [...prevTrips, newTrip]);
-    }
-    setShowForm(false);
+    setTrips((prevTrips) => {
+      if (editTrip) {
+        return prevTrips.map((t) =>
+          t.id === editTrip.id ? { ...t, ...trip, id: editTrip.id } : t
+        );
+      } else {
+        const newTrip = { id: Math.random().toString(), ...trip }; // Unique ID for new trip
+        return [...prevTrips, newTrip];
+      }
+    });
+    setEditTrip(null); // Clear edit state
+    setShowForm(false); // Hide the form after submitting
   };
 
+  // Delete trip by ID
   const deleteTripHandler = (id: string) => {
     setTrips((prevTrips) => prevTrips.filter((trip) => trip.id !== id));
   };
 
+  // Edit trip by ID
   const editTripHandler = (id: string) => {
     const tripToEdit = trips.find((trip) => trip.id === id);
     if (tripToEdit) {
       setEditTrip(tripToEdit);
-      setShowForm(true);
+      setShowForm(true); // Show form for editing
     }
   };
 
+  // Toggle the form visibility
   const toggleFormVisibility = () => {
     if (editTrip) {
-      setEditTrip(null);
+      setEditTrip(null); // If editing, clear it
     }
-    setShowForm((prevShowForm) => !prevShowForm);
+    setShowForm((prevShowForm) => !prevShowForm); // Toggle visibility of form
   };
 
   return (
@@ -113,20 +116,19 @@ const TripsPage: React.FC = () => {
             </div>
           ) : (
             <ul>
-  {trips.map((trip) => (
-    <li key={trip.id} className={styles.tripItem}>
-      <h3 className={styles.tripItemTitle}>{trip.name}</h3>
-      <p className={styles.tripItemText}>{trip.date}</p>
-      <p className={styles.tripItemText}>{trip.description}</p>
-      <p className={styles.tripItemText}>{trip.location}</p>
-      <div className={styles.buttonGroup}>
-        <button onClick={() => editTripHandler(trip.id)} className={styles.editButton}>Edit</button>
-        <button onClick={() => deleteTripHandler(trip.id)} className={styles.deleteButton}>Delete</button>
-      </div>
-    </li>
-  ))}
-</ul>
-
+              {trips.map((trip) => (
+                <li key={trip.id} className={styles.tripItem}>
+                  <h3 className={styles.tripItemTitle}>{trip.name}</h3>
+                  <p className={styles.tripItemText}>{trip.date}</p>
+                  <p className={styles.tripItemText}>{trip.description}</p>
+                  <p className={styles.tripItemText}>{trip.location}</p>
+                  <div className={styles.buttonGroup}>
+                    <button onClick={() => editTripHandler(trip.id)} className={styles.editButton}>Edit</button>
+                    <button onClick={() => deleteTripHandler(trip.id)} className={styles.deleteButton}>Delete</button>
+                  </div>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
       </div>
