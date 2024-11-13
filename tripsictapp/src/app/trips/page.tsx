@@ -31,7 +31,8 @@ const TripsPage: React.FC = () => {
       );
       setEditTrip(null);
     } else {
-      const newTrip = { id: Date.now().toString(), ...trip }; // Generate unique ID with Date.now()
+      // Generate unique ID with Date.now() and a random number
+      const newTrip = { id: `${Date.now()}-${Math.random()}`, ...trip };
       setTrips((prevTrips) => [...prevTrips, newTrip]);
     }
     setShowForm(false);
@@ -137,4 +138,3 @@ const TripsPage: React.FC = () => {
 };
 
 export default TripsPage;
-
