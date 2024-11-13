@@ -1,3 +1,4 @@
+// tripForm.tsx
 'use client';
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import styles from './Trip.module.css';
@@ -13,7 +14,6 @@ const TripForm: React.FC<TripFormProps> = ({ onAddTrip, editTrip }) => {
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
 
-  // Populate form fields if editTrip is provided
   useEffect(() => {
     if (editTrip) {
       setName(editTrip.name);
@@ -21,7 +21,6 @@ const TripForm: React.FC<TripFormProps> = ({ onAddTrip, editTrip }) => {
       setDescription(editTrip.description);
       setLocation(editTrip.location);
     } else {
-      // Clear form if no editTrip
       setName('');
       setDate('');
       setDescription('');
@@ -38,16 +37,15 @@ const TripForm: React.FC<TripFormProps> = ({ onAddTrip, editTrip }) => {
     }
 
     const newTrip = {
-      id: editTrip?.id, // Use existing ID if editing
+      id: editTrip?.id,
       name,
       date,
       description,
       location,
     };
 
-    onAddTrip(newTrip); // Pass the trip to parent component
+    onAddTrip(newTrip);
 
-    // Reset form fields
     setName('');
     setDate('');
     setDescription('');

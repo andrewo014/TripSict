@@ -1,3 +1,4 @@
+// Page.tsx
 'use client';
 import { useState } from 'react';
 import TripForm from './TripForm';
@@ -30,7 +31,7 @@ const TripsPage: React.FC = () => {
       );
       setEditTrip(null);
     } else {
-      const newTrip = { id: Math.random().toString(), ...trip };
+      const newTrip = { id: Date.now().toString(), ...trip }; // Generate unique ID with Date.now()
       setTrips((prevTrips) => [...prevTrips, newTrip]);
     }
     setShowForm(false);
@@ -136,3 +137,4 @@ const TripsPage: React.FC = () => {
 };
 
 export default TripsPage;
+
