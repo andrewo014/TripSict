@@ -5,43 +5,64 @@
     min-height: 100vh; /* Ensures it covers the full viewport */
     width: 100%;
     color: black;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
     width: 100%;
+
 }
 
 .navbar {
+    position: relative; /* Enables positioning for the pseudo-element */
     display: flex;
     justify-content: space-between;
-    position: relative;
-    align-items: center;
-    padding: 10px;
-    background-color: #bbb;
-    border-bottom: solid;
-}
+    align-items: flex-start;
+    border-radius: 10px;
+    height: 700px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 70px;
+    box-sizing: border-box;
+    overflow: hidden; /* Ensures the pseudo-element doesn’t exceed the navbar bounds */
+    padding: 1rem 2rem;
+    z-index: 1; /* Ensures navbar content stays above the blurred background */
+  }
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/Images/sunnyBeach.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px); /* Adjust the blur intensity as desired */
+    opacity: 0.7; /* Optional: Adjust opacity for a softer effect */
+    z-index: -1; /* Places the pseudo-element behind the .navbar content */
+    border-radius: 10px; /* Matches the border-radius of the .navbar */
+  }
 
 .intro {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin: 100px auto 40px;
     font-size: 40px;
     font-weight: bold;
-    margin-bottom: 40px;
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .logo {
-    font-size: 60px;
+    font-size: 1.5rem;
     font-weight: bold;
-    flex-shrink: 0;
 }
 
 .logoImage {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0 1rem;
     border-radius: 50%;
 }
 
@@ -90,7 +111,7 @@
   
   .item p {
     font-size: 1em;
-    color: #666;
+    color: #667;
   }
 
 /* CLIP ARTS/ICONS */
@@ -165,6 +186,7 @@
     background-color: #D0EFFF;
     color: black;
     flex-shrink: 0;
+    height: 45px;
 }
 
 /* MIDDLE IMAGE */
@@ -233,7 +255,6 @@
 }
 
 .content {
-    background-color: #D0EFFF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -244,6 +265,10 @@
     margin-top: 70px;
     margin-bottom: 70px;
     box-sizing: border-box;
+    background-image: url('/Images/sunnyBeach.jpg');
+    background-size: cover;         /* Ensures the image scales to cover the entire area */
+    background-repeat: no-repeat;    /* Prevents the image from repeating */
+    background-position: center; 
 }
 
 .newUser {
@@ -294,3 +319,30 @@
 .footerButtons:hover {
     text-decoration: underline;
 }
+
+.nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #333;
+    align-items: flex-start;
+  }
+
+  .blurryBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* Position it behind the main content */
+    background-image: url('/Images/sunnyBeach.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px); /* Adjust blur intensity */
+    opacity: 0.7; /* Optional: reduce opacity for a softer look */
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    
+  }

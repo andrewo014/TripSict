@@ -1,10 +1,14 @@
+"use client";
 import React from 'react';
 import Image from 'next/image';
 import styles from './homepage.module.css';
 import Link from 'next/link';
 
 
+
+
 export default function Homepage() {
+
 
   const items = [
     { id: 1, image: '/Images/sunnyBeach.jpg', title: 'Sunny Beach', description: 'Enjoy a day at the sunny beach with clear waters.' },
@@ -12,29 +16,71 @@ export default function Homepage() {
     { id: 3, image: '/Images/mountainRetreat.jpg', title: 'Mountain Retreat', description: 'Relax in the mountains with beautiful scenery.' }
   ];
 
+
   return (
 
-    
+
+   
+
 
     <div className={styles.pageContainer}>
     <div className={styles.container}>
-      <header className={styles.navbar}>
+      <header className={styles.idek}>
+        <div className={styles.navbar}>
         <div className={styles.logo}>TripSict</div>
-        <Image 
-          src="/Images/triptactLogo.jpg" 
-          alt="Triptact Photo Log" 
-          width={80} 
-          height={80} 
-          className={styles.logoImage} 
+        <nav className={styles.nav}>
+          <a href="#">Overview</a>
+          <a href="#">Pages</a>
+          <Image 
+          src="/Images/triptactLogo.jpg"
+          alt="Triptact Photo Log"
+          width={80}
+          height={80}
+          className={styles.logoImage}
         />
+          <a href="#">Information</a>
+          <a href="#">Cart (2)</a>
+        </nav>
           <Link href="trips" passHref>
           <button className={styles.signIn}>Sign In</button>
           </Link>
+          </div>
+
+          <main className={styles.content}>
+        <div className={styles.newUser}>
+          <h1>Use our app to plan your <br /> next getaway!</h1>
+          <p>With up-to-date information on lodging, <br /> food, and points of interest, <br /> travel planning has never been easier!</p>
+          <Link href="/signup" passHref>
+            <button className={styles.registerBtn}>New User? Register Here</button>
+        </Link>
+        <Link href="signin" passHref>
+          <button className={styles.signIn2}>Sign In</button>
+          </Link>
+        </div>
+        <div className={styles.appContainer}>
+          <div className={styles.topBar}>
+            <div className={styles.windowControls}>
+              <span className={`${styles.circle} ${styles.red}`}></span>
+              <span className={`${styles.circle} ${styles.yellow}`}></span>
+              <span className={`${styles.circle} ${styles.green}`}></span>
+            </div>
+            <div className={styles.navControls}>
+              <span className={styles.arrow}>&larr;</span>
+              <span className={styles.arrow}>&rarr;</span>
+            </div>
+          </div>
+          <Image src="/Images/family.webp" alt="Paris Trip Preview" width={1000} height={579} className={styles.tripPreview} />
+        </div>
+      </main>
+
       </header>
+
+      
 
       <div className={styles.headerBottom}>
         <div className={styles.intro}>The perfect place to plan your next trip away!</div>
       </div>
+
 
       <div className={styles.itemList}>
             {items.map((item) => (
@@ -46,10 +92,12 @@ export default function Homepage() {
             ))}
           </div>
 
+
           <div className={styles.headerTop}>
-        
+       
       </div>    
-    
+   
+
 
       <div className={styles.features}>
         <div className={styles.feature}>
@@ -69,6 +117,7 @@ export default function Homepage() {
           <p>View star ratings for <br /> all locations</p>
         </div>
       </div>
+
 
       <main className={styles.content}>
         <div className={styles.newUser}>
@@ -96,6 +145,7 @@ export default function Homepage() {
           <Image src="/Images/family.webp" alt="Paris Trip Preview" width={1000} height={579} className={styles.tripPreview} />
         </div>
       </main>
+
 
       <footer className={styles.bottom}>
         <div className={styles.footerContent}>
