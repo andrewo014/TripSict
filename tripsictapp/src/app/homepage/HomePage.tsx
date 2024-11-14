@@ -92,24 +92,6 @@ export default function Homepage() {
         
       </div>
 
-
-      <div className={styles.itemList}>
-            {items.map((item) => (
-              <div key={item.id} className={styles.item}>
-                <Image src={item.image} alt={item.title} width={200} height={200} className={styles.itemImage} />
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-            ))}
-          </div>
-
-
-          <div className={styles.headerTop}>
-       
-      </div>    
-   
-
-
       <div className={styles.features}>
         <div className={styles.feature}>
           <Image src="/Images/heart.png" alt="Heart" width={100} height={100} className={styles.icon} />
@@ -127,6 +109,127 @@ export default function Homepage() {
           <Image src="/Images/star.png" alt="Star" width={100} height={100} className={styles.icon} />
           <p>View star ratings for <br /> all locations</p>
         </div>
+      </div>
+
+
+      <div className={styles.itemList}>
+            {items.map((item) => (
+              <div key={item.id} className={styles.item}>
+                <Image src={item.image} alt={item.title} width={200} height={200} className={styles.itemImage} />
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+
+          <div className={styles.headerTop}>
+       
+      </div>
+
+            <div className={styles.headerBottom}>
+        
+      </div>    
+
+
+{/*EXPLORE LODGING*/}
+
+      <div className={styles.pageFillerContainer}>
+
+        <div className={styles.imageCards}>
+
+          <div className={styles.exploration}>EXPLORE LODGING</div>
+
+      <div className={styles.cardsImageContainer}>
+  <Image 
+    src="/Images/franceHotel.jpg" 
+    alt="France Hotel Photo" 
+    width={1000} 
+    height={579} 
+    className={styles.imagePreview} 
+  />
+  <div className={styles.overlay}>
+    <div className={styles.topBanner}>Paris, France</div>
+    <div className={styles.bottomInfo}>
+      <div className={styles.details}>
+        <span>4.0/5⭐
+</span>
+      </div>
+      <h3>Pullman Paris Tour Eiffel</h3>
+      <p>18 Avenue De Suffren, 22 Rue Jean Rey Entrée Au, 75015 Paris, France</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+{/*DINING AND RESTAURANTS*/}
+
+<div className={styles.pageFillerContainer}>
+
+<div className={styles.imageCards}>
+
+<div className={styles.imageContainer}>
+<Image 
+src="/Images/mexicanRestaurant.jpg" 
+alt="Another Beach Background" 
+width={1000} 
+height={579} 
+className={styles.tripPreview} 
+/>
+<div className={styles.overlay}>
+<div className={styles.topBanner}>Zona Hotelera, Cancun</div>
+<div className={styles.bottomInfo}>
+<div className={styles.details}>
+<span>5/5⭐</span>
+</div>
+<h3>NAVÍOS Mexican Fusion Seafood</h3>
+<p>Blvd. Kukulcan Km. 19.5, Zona Hotelera, 77500 Cancún, Q.R., Mexico</p>
+</div>
+</div>
+</div>
+
+<div className={styles.exploration}>DINING AND <br /> RESTAURANTS </div>
+
+</div>
+
+        
+      </div>
+
+{/*ATTRACTIONS*/}
+
+      <div className={styles.pageFillerContainer}>
+
+<div className={styles.imageCards}>
+
+<div className={styles.exploration}>ATTRACTIONS</div>
+
+<div className={styles.imageContainer}>
+<Image 
+src="/Images/archesUtah.webp" 
+alt="Arches National Park Utah" 
+width={1000} 
+height={579} 
+className={styles.tripPreview} 
+/>
+<div className={styles.overlay}>
+<div className={styles.topBanner}>Grand County, Utah</div>
+<div className={styles.bottomInfo}>
+<div className={styles.details}>
+<span>4.8/5⭐</span>
+</div>
+<h3>Arches National Park</h3>
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+        
       </div>
 
       <footer className={styles.bottom}>
