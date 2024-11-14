@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import styles from './SignUpPage.module.css';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface SignUpPageProps {
   onAddUser: (user: {
@@ -59,8 +60,15 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onAddUser }) => {
   };
 
   return (
+
+    
+
     <main className={styles.pageContent}>
+
+    
+
       <div className={styles.homeContainer}>
+
         <Link href="/" className={styles.homeLink}>Home</Link>
       </div>
       <h1 className={styles.welcomeTitle}>Welcome to TripSict!</h1>

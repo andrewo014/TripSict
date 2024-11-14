@@ -17,6 +17,8 @@
     position: relative;
     align-items: center;
     padding: 10px;
+    background-color: #bbb;
+    border-bottom: solid;
 }
 
 .intro {
@@ -275,7 +277,7 @@
 /* FOOTER */
 
 .bottom {
-    border-top: solid #D0EFFF;
+    border-top: solid;
     margin: 0 auto;
     background-color: #bbb;
     height: 9vh;

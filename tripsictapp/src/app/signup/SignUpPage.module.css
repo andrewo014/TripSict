@@ -130,3 +130,13 @@
   .homeLink:hover {
     text-decoration: underline;
   }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    padding: 10px;
+    background-color: #bbb;
+    border-bottom: solid;
+}
