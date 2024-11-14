@@ -11,9 +11,10 @@ export default function Homepage() {
 
 
   const items = [
-    { id: 1, image: '/Images/sunnyBeach.jpg', title: 'Sunny Beach', description: 'Enjoy a day at the sunny beach with clear waters.' },
-    { id: 2, image: '/Images/nyc.jpg', title: 'City Adventure', description: 'Discover the vibrant life of the city.' },
-    { id: 3, image: '/Images/mountainRetreat.jpg', title: 'Mountain Retreat', description: 'Relax in the mountains with beautiful scenery.' }
+    { id: 1, image: '/Images/sunnyBeach.jpg', title: 'Beach Getaway', description: "Escape to the coast for a sun-filled adventure where crystal-clear waters meet soft sandy shores." },
+    { id: 2, image: '/Images/nyc.jpg', title: 'City Adventure', description: 'Dive into the vibrant city life, filled with iconic sights, diverse cuisine, and thrilling nightlife.' },
+    { id: 3, image: '/Images/mountainRetreat.jpg', title: 'Mountain Retreat', description: 'Relax in the peaceful mountains, where stunning views and fresh air create the ultimate getaway' },
+    { id: 4, image: '/Images/family.webp', title: 'And More!', description: "Discover a world of unique experiences, from countryside escapes to adventure sports and cultural festivals."}
   ];
 
 
@@ -25,12 +26,12 @@ export default function Homepage() {
 
     <div className={styles.pageContainer}>
     <div className={styles.container}>
-      <header className={styles.idek}>
-        <div className={styles.navbar}>
-        <div className={styles.logo}>TripSict</div>
+      <header className={styles.headerTop}>
+        <div className={styles.options}>
+        <div className={styles.pageTitle}>TripSict</div>
         <nav className={styles.nav}>
-          <a href="#">Overview</a>
-          <a href="#">Pages</a>
+          <a href="#">Get Inspired</a>
+          <a href="#">How it Works</a>
           <Image 
           src="/Images/triptactLogo.jpg"
           alt="Triptact Photo Log"
@@ -38,17 +39,18 @@ export default function Homepage() {
           height={80}
           className={styles.logoImage}
         />
-          <a href="#">Information</a>
-          <a href="#">Cart (2)</a>
+          <a href="#">Travel Planning Tips</a>
+          <a href="#">Get Started</a>
         </nav>
           <Link href="trips" passHref>
           <button className={styles.signIn}>Sign In</button>
           </Link>
           </div>
-
           <main className={styles.content}>
         <div className={styles.newUser}>
-          <h1>Use our app to plan your <br /> next getaway!</h1>
+        <div className={styles.intro}>The Perfect Place To Plan <br />
+          Your Next Trip Away!</div>
+          <h1>Use TripSict app to plan your <br /> next getaway!</h1>
           <p>With up-to-date information on lodging, <br /> food, and points of interest, <br /> travel planning has never been easier!</p>
           <Link href="/signup" passHref>
             <button className={styles.registerBtn}>New User? Register Here</button>
@@ -57,20 +59,29 @@ export default function Homepage() {
           <button className={styles.signIn2}>Sign In</button>
           </Link>
         </div>
-        <div className={styles.appContainer}>
-          <div className={styles.topBar}>
-            <div className={styles.windowControls}>
-              <span className={`${styles.circle} ${styles.red}`}></span>
-              <span className={`${styles.circle} ${styles.yellow}`}></span>
-              <span className={`${styles.circle} ${styles.green}`}></span>
-            </div>
-            <div className={styles.navControls}>
-              <span className={styles.arrow}>&larr;</span>
-              <span className={styles.arrow}>&rarr;</span>
-            </div>
-          </div>
-          <Image src="/Images/family.webp" alt="Paris Trip Preview" width={1000} height={579} className={styles.tripPreview} />
-        </div>
+    
+        <div className={styles.imageContainer}>
+  <Image 
+    src="/Images/anotherBeach.jpg" 
+    alt="Another Beach Background" 
+    width={1000} 
+    height={579} 
+    className={styles.tripPreview} 
+  />
+  <div className={styles.overlay}>
+    <div className={styles.topBanner}>Oahu, Hawaii</div>
+    <div className={styles.bottomInfo}>
+      <div className={styles.details}>
+        <span>Snorkeling</span> · <span>Surfing</span> · <span>Hiking</span>
+      </div>
+      <h3>Adventure Awaits in Oahu</h3>
+      <p>Plan Your Trip Now!</p>
+    </div>
+  </div>
+</div>
+
+
+
       </main>
 
       </header>
@@ -78,7 +89,7 @@ export default function Homepage() {
       
 
       <div className={styles.headerBottom}>
-        <div className={styles.intro}>The perfect place to plan your next trip away!</div>
+        
       </div>
 
 
@@ -118,40 +129,11 @@ export default function Homepage() {
         </div>
       </div>
 
-
-      <main className={styles.content}>
-        <div className={styles.newUser}>
-          <h1>Use our app to plan your <br /> next getaway!</h1>
-          <p>With up-to-date information on lodging, <br /> food, and points of interest, <br /> travel planning has never been easier!</p>
-          <Link href="/signup" passHref>
-            <button className={styles.registerBtn}>New User? Register Here</button>
-        </Link>
-        <Link href="signin" passHref>
-          <button className={styles.signIn2}>Sign In</button>
-          </Link>
-        </div>
-        <div className={styles.appContainer}>
-          <div className={styles.topBar}>
-            <div className={styles.windowControls}>
-              <span className={`${styles.circle} ${styles.red}`}></span>
-              <span className={`${styles.circle} ${styles.yellow}`}></span>
-              <span className={`${styles.circle} ${styles.green}`}></span>
-            </div>
-            <div className={styles.navControls}>
-              <span className={styles.arrow}>&larr;</span>
-              <span className={styles.arrow}>&rarr;</span>
-            </div>
-          </div>
-          <Image src="/Images/family.webp" alt="Paris Trip Preview" width={1000} height={579} className={styles.tripPreview} />
-        </div>
-      </main>
-
-
       <footer className={styles.bottom}>
         <div className={styles.footerContent}>
-        <Image src="/Images/triptactLogo.jpg" alt="Triptact Photo Log" width={80} height={80} className={styles.logoImage} />
         <button className={styles.footerButtons}>About Tripsict</button>
         <button className={styles.footerButtons}>Founders</button>
+        <Image src="/Images/triptactLogo.jpg" alt="Triptact Photo Log" width={80} height={80} className={styles.logoImage} />
         <button className={styles.footerButtons}>Help Center</button>
         <button className={styles.footerButtons}>Report an issue</button>
         </div>
