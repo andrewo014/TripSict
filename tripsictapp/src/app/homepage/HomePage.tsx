@@ -92,6 +92,7 @@ export default function Homepage() {
         
       </div>
 
+{/*
       <div className={styles.features}>
         <div className={styles.feature}>
           <Image src="/Images/heart.png" alt="Heart" width={100} height={100} className={styles.icon} />
@@ -110,6 +111,7 @@ export default function Homepage() {
           <p>View star ratings for <br /> all locations</p>
         </div>
       </div>
+  */}
 
 
       <div className={styles.itemList}>
@@ -138,7 +140,13 @@ export default function Homepage() {
 
         <div className={styles.imageCards}>
 
+        <div className={styles.headerDescription}>
+
           <div className={styles.exploration}>EXPLORE LODGING</div>
+          <h4 className={styles.descriptionh4}>Discover the perfect place to stay with our curated lodging options. From charming bed-and-breakfasts to luxurious resorts, explore detailed information, including photos, reviews, and amenities, to make your stay unforgettable. Whatever your travel style, find accommodations tailored to your needs and preferences.</h4>
+
+
+          </div>
 
       <div className={styles.cardsImageContainer}>
   <Image 
@@ -191,7 +199,11 @@ className={styles.tripPreview}
 </div>
 </div>
 
-<div className={styles.exploration}>DINING AND <br /> RESTAURANTS </div>
+<div className={styles.headerDescription}>
+<div className={styles.exploration}>DINING</div>
+<h4 className={styles.descriptionh4}>Treat your taste buds to an array of dining options, from local eateries to fine dining restaurants. Explore detailed descriptions, reviews, and photos to find the perfect spot for every meal. Whether you're in the mood for comfort food or culinary adventures, we've got the recommendations to satisfy your cravings.</h4>
+</div>
+
 
 </div>
 
@@ -204,7 +216,13 @@ className={styles.tripPreview}
 
 <div className={styles.imageCards}>
 
+<div className={styles.headerDescription}>
+
 <div className={styles.exploration}>ATTRACTIONS</div>
+<h4 className={styles.descriptionh4}>Discover the best attractions to make your trip unforgettable. From must-see landmarks to hidden gems, explore detailed information, reviews, and photos to plan your perfect adventure. Whatever your interests, find experiences that make every moment memorable.</h4>
+
+</div>
+
 
 <div className={styles.imageContainer}>
 <Image 
@@ -224,6 +242,44 @@ className={styles.tripPreview}
 
 </div>
 </div>
+</div>
+
+
+</div>
+
+        
+      </div>
+
+{/*DINING AND RESTAURANTS*/}
+
+<div className={styles.pageFillerContainer}>
+
+<div className={styles.imageCards}>
+
+<div className={styles.imageContainer}>
+<Image 
+src="/Images/ferrisWheel.jpg" 
+alt="Ferris Wheel Photo" 
+width={1000} 
+height={579} 
+className={styles.tripPreview} 
+/>
+<div className={styles.overlay}>
+<div className={styles.topBanner}>TRIPSICT</div>
+<div className={styles.bottomInfo}>
+<div className={styles.details}>
+</div>
+<h3>Your Guide to Seamless Getaways and Unforgettable Adventures!</h3>
+</div>
+</div>
+</div>
+
+<div className={styles.headerDescription}>
+<div className={styles.exploration}>AND SO MUCH MORE!</div>
+<h4 className={styles.descriptionh4}>TripSict is your ultimate travel companion, designed to take the stress out of planning and help you craft the perfect getaway. From organizing your itinerary to discovering unique experiences, Tripsict ensures every trip is as smooth as it is memorable. Let us guide you to your next adventure with ease and style!</h4>
+<Link href="/signup" passHref>
+            <button className={styles.registerBtn}>Get Started</button>
+        </Link>
 </div>
 
 
