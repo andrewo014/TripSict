@@ -89,8 +89,8 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onAddUser }) => {
 
 
       
-      <h1 className={styles.welcomeTitle}>Welcome Back to TripSict!</h1>
-      <h2 className={styles.welcomeTitle}>Sign In</h2>
+      <h1 className={styles.welcomeTitle}>Welcome to TripSict!</h1>
+      <h2 className={styles.welcomeTitle}>Sign Up</h2>
       <form className={styles.signUpForm} onSubmit={submitHandler}>
         <div className={styles.name}>
           <div className={styles.fieldContainer}>
