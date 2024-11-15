@@ -40,7 +40,7 @@ export default function Homepage() {
           className={styles.logoImage}
         />
           <a href="#">Travel Planning Tips</a>
-          <a href="#">Get Started</a>
+          <a href="/signup">Get Started</a>
         </nav>
           <Link href="trips" passHref>
           <button className={styles.signIn}>Sign In</button>

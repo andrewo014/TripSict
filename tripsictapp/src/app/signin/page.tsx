@@ -41,16 +41,25 @@ const SignInPage: React.FC<SignInPageProps> = ({ onLogin }) => {
     <main className={styles.pageContent}>
 
 <header className={styles.navbar}>
-        <div className={styles.logo}>TripSict</div>
-        <Image src="/Images/triptactLogo.jpg" 
-          alt="Triptact Photo Log" 
-          width={80} 
-          height={80} 
-          className={styles.logoImage} 
+<div className={styles.options}>
+        <div className={styles.pageTitle}>TripSict</div>
+        <nav className={styles.nav}>
+          <a href="#">Get Inspired</a>
+          <a href="#">How it Works</a>
+          <Image 
+          src="/Images/triptactLogo.jpg"
+          alt="Triptact Photo Log"
+          width={80}
+          height={80}
+          className={styles.logoImage}
         />
+          <a href="#">Travel Planning Tips</a>
+          <a href="/signup">Get Started</a>
+        </nav>
           <Link href="/" passHref>
-          <button className={styles.homeButton}>Home</button>
+          <button className={styles.signIn}>Home</button>
           </Link>
+          </div>
       </header>
   <div className={styles.nonheadercontent}>
       <h1 className={styles.welcomeTitle}>Welcome Back to TripSict!</h1>

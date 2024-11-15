@@ -65,14 +65,32 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onAddUser }) => {
 
     <main className={styles.pageContent}>
 
-    
+    <header className={styles.headerContainer}>
+    <div className={styles.options}>
+        <div className={styles.pageTitle}>TripSict</div>
+        <nav className={styles.nav}>
+          <a href="#">Get Inspired</a>
+          <a href="#">How it Works</a>
+          <Image 
+          src="/Images/triptactLogo.jpg"
+          alt="Triptact Photo Log"
+          width={80}
+          height={80}
+          className={styles.logoImage}
+        />
+          <a href="#">Travel Planning Tips</a>
+          <a href="/signup">Get Started</a>
+        </nav>
+          <Link href="/" passHref>
+          <button className={styles.signIn}>Home</button>
+          </Link>
+          </div>
+    </header>
 
-      <div className={styles.homeContainer}>
 
-        <Link href="/" className={styles.homeLink}>Home</Link>
-      </div>
-      <h1 className={styles.welcomeTitle}>Welcome to TripSict!</h1>
-      <h2 className={styles.welcomeTitle}>Sign Up</h2>
+      
+      <h1 className={styles.welcomeTitle}>Welcome Back to TripSict!</h1>
+      <h2 className={styles.welcomeTitle}>Sign In</h2>
       <form className={styles.signUpForm} onSubmit={submitHandler}>
         <div className={styles.name}>
           <div className={styles.fieldContainer}>

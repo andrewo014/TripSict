@@ -191,8 +191,8 @@
 
 .signIn {
     width: 90px;
-    background-color: #D0EFFF;
-    color: black;
+    background-color: #0099ff;
+    color: white;
     flex-shrink: 0;
     height: 45px;
 }
