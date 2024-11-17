@@ -27,18 +27,29 @@ const TripsPage: React.FC = () => {
  };
 
 
- const addTripHandler = (trip: { id?: string; name: string; date: string; description: string; location: string }) => {
-   if (editTrip) {
-     setTrips((prevTrips) =>
-       prevTrips.map((t) => (t.id === editTrip.id ? { ...t, ...trip, id: editTrip.id } : t))
-     );
-     setEditTrip(null);
-   } else {
-     const newTrip = { id: Math.random().toString(), ...trip };
-     setTrips((prevTrips) => [...prevTrips, newTrip]);
-   }
-   setShowForm(false);
- };
+ const addTripHandler = (trip: { name: string; date: string; description: string; location: string }) => {
+  if (editTrip) {
+    setTrips((prevTrips) => {
+      const updatedTrips = prevTrips.map((t) =>
+        t.id === editTrip.id ? { ...t, ...trip, id: editTrip.id } : t
+      );
+      // Sort trips by date after editing
+      return updatedTrips.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    });
+    console.log('Edited trip with id:', editTrip.id);
+    setEditTrip(null);
+  } else {
+    const newTrip = { id: Math.random().toString(), ...trip };
+    console.log('New trip created:', newTrip);
+    setTrips((prevTrips) => {
+      const updatedTrips = [...prevTrips, newTrip];
+      // Sort trips by date after adding
+      return updatedTrips.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    });
+  }
+  setShowForm(false);
+};
+
 
 
  const deleteTripHandler = (id: string) => {
@@ -47,12 +58,15 @@ const TripsPage: React.FC = () => {
 
 
  const editTripHandler = (id: string) => {
-   const tripToEdit = trips.find((trip) => trip.id === id);
-   if (tripToEdit) {
-     setEditTrip(tripToEdit);
-     setShowForm(true);
-   }
- };
+  const tripToEdit = trips.find((trip) => trip.id === id);
+  if (tripToEdit) {
+    // Use a function to batch state updates safely
+    setTimeout(() => {
+      setEditTrip(tripToEdit);
+      setShowForm(true);
+    }, 0);
+  }
+};
 
 
  const toggleFormVisibility = () => {
@@ -66,9 +80,16 @@ const TripsPage: React.FC = () => {
  return (
    <main className={styles.tripPageContainer}>
      <header className={styles.navbar}>
+      <div className={styles.titleButton}>
        <button onClick={toggleSidebar} className={styles.sidebarToggleButton}>
-         {isSidebarOpen ? 'Close Menu' : 'Menu'}
+       <img 
+    src="/Images/hamburgerMenu.png" 
+    alt="Menu" 
+    style={{ width: '24px', height: '24px' }} 
+  />
        </button>
+       <h1 className={styles.hamburgerTitle}>TripSict</h1>
+       </div>
        <Image
          src="/Images/triptactLogo.jpg"
          alt="Triptact Photo Log"
@@ -81,10 +102,15 @@ const TripsPage: React.FC = () => {
        </Link>
      </header>
 
+     <div className={styles.myDashboard}>
+      <h1 className={styles.myDashboardText}>My Dashboard</h1>
+     </div>
 
      {/* Sidebar */}
      <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''}`}>
        <button onClick={toggleSidebar} className={styles.closeButton}>X</button>
+
+       <div className={styles.sideBarWork}>
       
        <Image
          src="/Images/triptactLogo.jpg"
@@ -93,11 +119,45 @@ const TripsPage: React.FC = () => {
          height={80}
          className={styles.sideBarLogo}
        />
+
+       <h1 className={styles.sideBarTitle}>TripSict</h1>
       
+      </div>
+
        <div className={styles.sidebarButtons}>
-         <button className={styles.sidebarButton}>Trips</button>
-         <button className={styles.sidebarButton}>Notes</button>
-         <button className={styles.sidebarButton}>My Flights</button>
+       <Link href="trips" passHref>
+         <button className={styles.sidebarButton}>
+         <img 
+            src="/Images/palmTreeIcon.png" 
+            alt="Menu" 
+            style={{ width: '24px', height: '24px', marginRight: '8px'  }} 
+          />
+          Trips
+          </button>
+          </Link>
+          <button className={styles.sidebarButton}>
+          <img 
+            src="/Images/itineraryIcon.png" 
+            alt="Menu" 
+            style={{ width: '24px', height: '24px', marginRight: '8px' }} 
+          />
+          Itinerary
+            </button>
+         <button className={styles.sidebarButton}>
+         <img 
+            src="/Images/notepadIcon.png" 
+            alt="Menu" 
+            style={{ width: '24px', height: '24px', marginRight: '8px'  }} 
+          />
+          Notes
+          </button>
+         <button className={styles.sidebarButton}>
+         <img 
+            src="/Images/planeIcon.png" 
+            alt="Menu" 
+            style={{ width: '24px', height: '24px', marginRight: '8px'  }} 
+          />
+          Flights</button>
          <button className={styles.sidebarButton}>Ride Share</button>
        </div>
      </div>
@@ -106,27 +166,35 @@ const TripsPage: React.FC = () => {
      <h1 className={styles.welcome}>Welcome Back!</h1>
 
 
-     <h4 className={styles.title}>My Trips </h4>
+     <div className={styles.addTripForm}>
 
-
-     <div className={styles.nonHeaderContent}>
+      
+     <h4 className={styles.title}>Trips </h4>
        <button onClick={toggleFormVisibility} className={styles.addTripButton}>
          {showForm ? 'Cancel' : editTrip ? 'Edit Trip' : 'Add Trip'}
        </button>
 
 
-       {showForm && <TripForm onAddTrip={addTripHandler} editTrip={editTrip} />}
+       
+
+       </div>
+
+    
+
+     <div className={styles.nonHeaderContent}>
+
 
 
        <div className={styles.tripList}>
+       {showForm && <TripForm onAddTrip={addTripHandler} editTrip={editTrip} />}
          {trips.length === 0 ? (
            <div className={styles.noTrips}>
              <p>No trips added yet.</p>
            </div>
          ) : (
            <ul>
-             {trips.map((trip) => (
-               <li key={trip.id} className={styles.tripItem}>
+            {trips.map((trip, index) => (
+            <li key={trip.id || index} className={styles.tripItem}>
                  <h3 className={styles.tripItemTitle}>{trip.name}</h3>
                  <p className={styles.tripItemText}>{trip.date}</p>
                  <p className={styles.tripItemText}>{trip.description}</p>
@@ -142,6 +210,9 @@ const TripsPage: React.FC = () => {
        </div>
      </div>
            
+      <div className={styles.tripsDisplay}>
+        <p>idek bruh</p>
+        </div>     
      <footer className={styles.footer}>
          <p>&copy; 2024 TripSict</p>
      </footer>

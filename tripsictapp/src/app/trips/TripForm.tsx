@@ -30,27 +30,27 @@ const TripForm: React.FC<TripFormProps> = ({ onAddTrip, editTrip }) => {
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
-
+  
     if (!name || !date || !description || !location) {
       alert('Please fill in all fields');
       return;
     }
-
+  
     const newTrip = {
-      id: editTrip?.id,
       name,
       date,
       description,
       location,
     };
-
-    onAddTrip(newTrip);
-
+  
+    onAddTrip(newTrip); // Pass trip without `id`
+  
     setName('');
     setDate('');
     setDescription('');
     setLocation('');
   };
+  
 
   return (
     <form onSubmit={submitHandler} className={styles.tripForm}>
