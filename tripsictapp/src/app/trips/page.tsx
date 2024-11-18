@@ -103,7 +103,8 @@ const TripsPage: React.FC = () => {
      </header>
 
      <div className={styles.myDashboard}>
-      <h1 className={styles.myDashboardText}>My Dashboard</h1>
+      <h4 className={styles.myDashboardLittleText}>Welcome back, name</h4>
+      <h1 className={styles.myDashboardText}>Dashboard</h1>
      </div>
 
      {/* Sidebar */}
@@ -161,10 +162,6 @@ const TripsPage: React.FC = () => {
          <button className={styles.sidebarButton}>Ride Share</button>
        </div>
      </div>
-
-
-     <h1 className={styles.welcome}>Welcome Back!</h1>
-
 
      <div className={styles.addTripForm}>
 
