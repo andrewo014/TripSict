@@ -107,9 +107,8 @@
   .tripItem {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+   
     text-align: left;
-    
     margin-bottom: 35px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -612,6 +611,7 @@
   border-radius: 4px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .titleAndButtons {

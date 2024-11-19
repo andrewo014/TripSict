@@ -59,6 +59,13 @@ useEffect(() => {
   checkAlerts();
 }, [trips]);
 
+useEffect(() => {
+  const savedTrips = JSON.parse(localStorage.getItem('trips') || '[]');
+  console.log('Loaded trips from localStorage:', savedTrips);
+  setTrips(savedTrips);
+}, []);
+
+
  const toggleSidebar = () => {
    setIsSidebarOpen(!isSidebarOpen);
  };
@@ -94,34 +101,33 @@ useEffect(() => {
   };
 }, []);
 
- const addTripHandler = (trip: { name: string; date: string; description: string; location: string }) => {
+const addTripHandler = (trip: { name: string; date: string; description: string; location: string }) => {
   if (editTrip) {
-    setTrips((prevTrips) => {
-      const updatedTrips = prevTrips.map((t) =>
-        t.id === editTrip.id ? { ...t, ...trip, id: editTrip.id } : t
-      );
-      // Sort trips by date after editing
-      return updatedTrips.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-    });
-    console.log('Edited trip with id:', editTrip.id);
+    const updatedTrips = trips.map((t) =>
+      t.id === editTrip.id ? { ...editTrip, ...trip } : t
+    );
+    localStorage.setItem('trips', JSON.stringify(updatedTrips)); // Save to localStorage
+    console.log('Updated trips array:', updatedTrips);
+    setTrips(updatedTrips);
     setEditTrip(null);
   } else {
     const newTrip = { id: Math.random().toString(), ...trip };
+    const updatedTrips = [...trips, newTrip];
+    localStorage.setItem('trips', JSON.stringify(updatedTrips)); // Save to localStorage
     console.log('New trip created:', newTrip);
-    setTrips((prevTrips) => {
-      const updatedTrips = [...prevTrips, newTrip];
-      // Sort trips by date after adding
-      return updatedTrips.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-    });
+    setTrips(updatedTrips);
   }
   setShowForm(false);
 };
 
 
 
- const deleteTripHandler = (id: string) => {
-   setTrips((prevTrips) => prevTrips.filter((trip) => trip.id !== id));
- };
+const deleteTripHandler = (id: string) => {
+  const updatedTrips = trips.filter((trip) => trip.id !== id);
+  localStorage.setItem('trips', JSON.stringify(updatedTrips)); // Save to localStorage
+  console.log('Trips after deletion:', updatedTrips);
+  setTrips(updatedTrips);
+};
 
 
  const editTripHandler = (id: string) => {
@@ -302,48 +308,43 @@ useEffect(() => {
 
     
 
-     <div className={styles.nonHeaderContent}>
+       <div className={styles.nonHeaderContent}>
 
 
 
-       <div className={styles.tripList}>
-       {showForm && <TripForm onAddTrip={addTripHandler} editTrip={editTrip} />}
-         {trips.length === 0 ? (
-           <div className={styles.noTrips}>
-             <p>No trips added yet.</p>
-           </div>
-         ) : (
-<ul>
-  {trips.map((trip) => (
-    <li key={trip.id} className={styles.tripItem}>
-      <Link href={`/trips/${trip.id}`}>
+<div className={styles.tripList}>
+{showForm && <TripForm onAddTrip={addTripHandler} editTrip={editTrip} />}
+  {trips.length === 0 ? (
+    <div className={styles.noTrips}>
+      <p>No trips added yet.</p>
+    </div>
+  ) : (
+    <ul>
+     {trips.map((trip, index) => (
+     <li key={trip.id || index} className={styles.tripItem}>
         
-        <div className={styles.tripContent}>
-          <div className={styles.topBanner}>
-            <h3 className={styles.locationHighlight}>{trip.name}</h3>
-            <p className={styles.locationHighlightLower}>{trip.location}</p>
+       <div className={styles.titleAndButtons}>
+         <div className={styles.topBanner}>
+         <Link href={`/trips/${trip.id}`}>
+          <h3 className={styles.locationHighlight}>{trip.name}</h3>
+          </Link>
+          <p className={styles.locationHighlightLower}>{trip.location}</p>
           </div>
           <p className={styles.middleBanner}>{trip.date}</p>
-          <div className={styles.bottomBanner}>
-            <p className={styles.bottomInfo}>{trip.description}</p>
+          <div className={styles.buttonGroup}>
+            <button onClick={() => editTripHandler(trip.id)} className={styles.editButton}>Edit</button>
+            <button onClick={() => deleteTripHandler(trip.id)} className={styles.deleteButton}>Delete</button>
           </div>
-        </div>
-        
-      </Link>
-      <div className={styles.buttonGroup}>
-        <button onClick={() => editTripHandler(trip.id)} className={styles.editButton}>
-          Edit
-        </button>
-        <button onClick={() => deleteTripHandler(trip.id)} className={styles.deleteButton}>
-          Delete
-        </button>
-      </div>
-    </li>
-  ))}
-</ul>
-         )}
-       </div>
-     </div>
+          </div>
+          <div className={styles.bottomBanner}>
+          <p className={styles.bottomInfo}>{trip.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+</div>
             
      <footer className={styles.footer}>
          <p>&copy; 2024 TripSict</p>
