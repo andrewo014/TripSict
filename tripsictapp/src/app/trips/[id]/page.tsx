@@ -1,5 +1,4 @@
 'use client';
-
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './specificTrip.module.css';
@@ -19,12 +18,15 @@ interface Place {
   name: string;
   formatted_address: string;
   rating?: number;
+  place_id: string;
+  photo_reference?: string;
 }
 
 const TripDetailsPage = () => {
   const { id } = useParams();
   const [trip, setTrip] = useState<Trip | null>(null);
   const [places, setPlaces] = useState<Place[]>([]);
+  const [selectedPlaces, setSelectedPlaces] = useState<Place[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   const formatDate = (dateString: string): string => {
@@ -46,8 +48,8 @@ const TripDetailsPage = () => {
     return `${monthName} ${dayNumber}${suffix}, ${yearNumber}`;
   };
 
+  // Load trip details from localStorage
   useEffect(() => {
-    // Load trip details from localStorage
     if (id) {
       const storedTrips = JSON.parse(localStorage.getItem('trips') || '[]');
       const tripDetails = storedTrips.find((t: Trip) => t.id === id);
@@ -55,8 +57,21 @@ const TripDetailsPage = () => {
     }
   }, [id]);
 
+  // Load selected places from localStorage on mount
   useEffect(() => {
-    // Fetch places from the API route
+    const savedLodging = localStorage.getItem('selectedPlaces');
+    if (savedLodging) {
+      setSelectedPlaces(JSON.parse(savedLodging));
+    }
+  }, []);
+
+  // Save selected places to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('selectedPlaces', JSON.stringify(selectedPlaces));
+  }, [selectedPlaces]);
+
+  // Fetch places and filter out those already in selectedPlaces
+  useEffect(() => {
     const fetchPlaces = async () => {
       if (!trip?.location) {
         console.error('Trip location is missing.');
@@ -65,13 +80,32 @@ const TripDetailsPage = () => {
       }
 
       try {
-        const response = await fetch(`/api/places?query=lodging+in+${encodeURIComponent(trip.location)}`);
+        const response = await fetch(
+          `/api/places?query=lodging+in+${encodeURIComponent(trip.location)}`
+        );
         if (!response.ok) {
           throw new Error(`Failed to fetch places: ${response.statusText}`);
         }
 
         const data = await response.json();
-        setPlaces(data);
+
+        const placesWithPhotos: Place[] = data.map((place: any) => ({
+          name: place.name,
+          formatted_address: place.formatted_address,
+          rating: place.rating,
+          place_id: place.place_id,
+          photo_reference: place.photos?.[0]?.photo_reference || null,
+        }));
+
+        // Filter fetched places to exclude already selected places
+        setPlaces(
+          placesWithPhotos.filter(
+            (place) =>
+              !selectedPlaces.some(
+                (selectedPlace) => selectedPlace.place_id === place.place_id
+              )
+          )
+        );
       } catch (error) {
         console.error('Error fetching places:', error);
       } finally {
@@ -82,7 +116,17 @@ const TripDetailsPage = () => {
     if (trip) {
       fetchPlaces();
     }
-  }, [trip]);
+  }, [trip, selectedPlaces]);
+
+  const handleAddToYourLodging = (place: Place) => {
+    setSelectedPlaces((prev) => [...prev, place]);
+    setPlaces((prev) => prev.filter((p) => p.place_id !== place.place_id));
+  };
+
+  const handleRemoveFromYourLodging = (place: Place) => {
+    setSelectedPlaces((prev) => prev.filter((p) => p.place_id !== place.place_id));
+    setPlaces((prev) => [...prev, place]);
+  };
 
   if (!trip) {
     return <p>Loading trip details...</p>;
@@ -121,23 +165,89 @@ const TripDetailsPage = () => {
       </div>
 
       <div className={styles.lodging}>
-      <h1 className={styles.lodgingTitle}>
-         Your Lodging
-        </h1>
+        <h1 className={styles.lodgingTitle}>Your Lodging</h1>
+        <div className={styles.cardsContainer}>
+          {selectedPlaces.length > 0 ? (
+            selectedPlaces.map((place, index) => (
+                <div key={index} className={styles.lodgingCard}>
+                <h3 className={styles.cardTitle}>
+                <a
+            href={`https://www.google.com/maps/place/?q=place_id:${place.place_id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.placeLink}
+            >
+            {place.name}
+            </a>
+                </h3>
+                {place.photo_reference ? (
+            <img
+              src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${place.photo_reference}&key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}
+              alt={place.name}
+              className={styles.placeImage}
+            />
+          ) : (
+            <p className={styles.noPhotoText}>Photo not available</p>
+          )}
+                <p className={styles.cardAddress}>{place.formatted_address}</p>
+                <p className={styles.cardRating}>
+                  Rating: {place.rating ? `${place.rating}/5 ⭐` : 'N/A'}
+                </p>
+                <button
+                  className={styles.removeButton}
+                  onClick={() => handleRemoveFromYourLodging(place)}
+                >
+                  X
+                </button>
+              </div>
+            ))
+          ) : (
+            <h1 className={styles.noLodging}>No lodging selected yet.</h1>
+          )}
+        </div>
+      </div>
+
+      <div className={styles.lodging}>
         <h1 className={styles.lodgingTitle}>
-          Lodging options in {trip.location}
+          Lodging options in: {trip.location}
         </h1>
-        <div>
+        <div className={styles.cardsContainer}>
           {loading ? (
-            <h1 className={styles.loading}>Loading lodging options...</h1>
+            <p>Loading lodging options...</p>
           ) : places.length > 0 ? (
             places.map((place, index) => (
               <div key={index} className={styles.lodgingCard}>
-                <h3 className={styles.topBanner}>{place.name}</h3>
-                <div className={styles.bottomInfo}>
-                <p>{place.formatted_address}</p>
-                <p>Rating: {place.rating ? `${place.rating}/5 ⭐` : 'N/A'}</p>
-                </div>
+                <h3 className={styles.cardTitle}>
+                <a
+            href={`https://www.google.com/maps/place/?q=place_id:${place.place_id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.placeLink}
+            >
+            {place.name}
+            </a>
+
+            {place.photo_reference ? (
+            <img
+              src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${place.photo_reference}&key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}
+              alt={place.name}
+              className={styles.placeImage}
+            />
+          ) : (
+            <p className={styles.noPhotoText}>Photo not available</p>
+          )}
+
+                </h3>
+                <p className={styles.cardAddress}>{place.formatted_address}</p>
+                <p className={styles.cardRating}>
+                  Rating: {place.rating ? `${place.rating}/5 ⭐` : 'N/A'}
+                </p>
+                <button
+                  className={styles.addButton}
+                  onClick={() => handleAddToYourLodging(place)}
+                >
+                  Add
+                </button>
               </div>
             ))
           ) : (
