@@ -4,6 +4,8 @@ import TripForm from './TripForm';
 import Image from 'next/image';
 import styles from './Trip.module.css';
 import Link from 'next/link';
+import Dashboard from './dashboard';
+import { SessionProvider } from 'next-auth/react';
 
 
 interface Trip {
@@ -151,6 +153,7 @@ const deleteTripHandler = (id: string) => {
 
 
  return (
+  <SessionProvider>
    <main className={styles.tripPageContainer}>
      <header className={styles.navbar}>
       <div className={styles.titleButton}>
@@ -228,14 +231,8 @@ const deleteTripHandler = (id: string) => {
     </Link>
   </div>
 </header>
-
-     <div className={styles.myDashboard}>
-      <div className={styles.welcomeBack}>
-      <h4 className={styles.myDashboardLittleText}>Welcome back, name</h4>
-      <h1 className={styles.myDashboardText}>Dashboard</h1>
-      </div>
-      <h1 className={styles.currentDate}>{formattedDate}</h1>
-     </div>
+    <Dashboard/>
+   
 
      {/* Sidebar */}
      <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''}`}>
@@ -350,6 +347,7 @@ const deleteTripHandler = (id: string) => {
          <p>&copy; 2024 TripSict</p>
      </footer>
    </main>
+   </SessionProvider>
  );
 };
 
