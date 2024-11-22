@@ -31,51 +31,33 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onAddUser }) => {
   ) => {
     setter(event.target.value);
   };
-  const submitHandler = async (event: FormEvent) => {
+
+  const submitHandler = (event: FormEvent) => {
     event.preventDefault();
-  
+
     if (!username || !password || !email || !firstName || !lastName) {
       alert('Please enter all required fields!');
       return;
     }
 
     const newUser = {
+      id: Math.floor(Math.random() * 1000),
       firstName,
       lastName,
       username,
       email,
       password,
     };
-  
-    try {
-      const response = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newUser),
-      });
-  
-      const data = await response.json();
-  
-      if (response.ok) {
-        alert('User registered successfully!');
-        onAddUser(data.user); 
-      } else {
-        alert(data.message || 'An error occurred');
-      }
-  
-      setFirstName('');
-      setLastName('');
-      setUsername('');
-      setEmail('');
-      setPassword('');
-    } catch (error) {
-      console.error('Error during signup:', error);
-      alert('An error occurred during signup');
-    }
+
+    onAddUser(newUser);
+
+    // Reset form
+    setFirstName('');
+    setLastName('');
+    setUsername('');
+    setEmail('');
+    setPassword('');
   };
-  
 
   return (
 
