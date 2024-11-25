@@ -42,7 +42,7 @@ export default function Homepage() {
           <a href="#">Travel Planning Tips</a>
           <a href="/signup">Get Started</a>
         </nav>
-          <Link href="signin" passHref>
+          <Link href="trips" passHref>
           <button className={styles.signIn}>Sign In</button>
           </Link>
           </div>
