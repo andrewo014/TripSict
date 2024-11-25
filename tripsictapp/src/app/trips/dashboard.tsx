@@ -11,7 +11,7 @@ const formatDate = (date: Date): string => {
       : day % 10 === 3 && day !== 13
       ? "rd,"
       : "th,";
-  const month = date.toLocaleString('en-US', { month: 'short' }); // Get short month name
+  const month = date.toLocaleString("en-US", { month: "short" }); // Get short month name
   const year = date.getFullYear(); // Get year
   return `${month} ${day}${suffix} ${year}`;
 };
@@ -20,7 +20,9 @@ const Dashboard: React.FC = () => {
   const [name, setName] = useState<string | undefined>(undefined);
   useEffect(() => {
     if (session) {
-      setName(session.user?.name); // Set the logged-in user's name
+      console.log("This is the session" + session);
+      const userName = session?.user?.name ?? "Guest"; // if the user name is null then use Guest as the name
+      setName(userName); // Set the logged-in user's name
     }
   }, [session]);
   const today = new Date();

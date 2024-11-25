@@ -271,6 +271,17 @@ const TripsPage: React.FC = () => {
           </div>
 
           <div className={styles.sidebarButtons}>
+            <button className={styles.sidebarButton}>
+              <Image
+                src="/Images/UserIcon.png"
+                alt="Menu"
+                width={24}
+                height={24}
+                style={{ marginRight: "8px" }}
+              />
+              <h1>User</h1>
+            </button>
+
             <Link href="trips" passHref>
               <button className={styles.currentPageButton}>
                 <Image
