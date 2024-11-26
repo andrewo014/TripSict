@@ -314,6 +314,7 @@ const TripsPage: React.FC = () => {
               />
               Notes
             </button>
+            <Link href="flights">
             <button className={styles.sidebarButton}>
               <Image
                 src="/Images/planeIcon.png"
@@ -324,6 +325,7 @@ const TripsPage: React.FC = () => {
               />
               Flights
             </button>
+            </Link>
           </div>
         </div>
 

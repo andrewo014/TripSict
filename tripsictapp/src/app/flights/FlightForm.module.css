@@ -1,0 +1,51 @@
+.flightForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between form elements */
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .flightForm input,
+  .flightForm textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .flightForm input:focus,
+  .flightForm textarea:focus {
+    outline: none;
+    border-color: #007acc;
+    background-color: #eef7ff;
+  }
+  
+  .flightForm textarea {
+    resize: none; /* Prevent resizing */
+    height: 80px; /* Default height for textarea */
+  }
+  
+  .flightForm button {
+    padding: 10px 15px;
+    background-color: #007acc;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .flightForm button:hover {
+    background-color: #005f9c;
+  }
+  

@@ -2,7 +2,7 @@
 'use client';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import styles from './specificTrip.module.css';
+import styles from './specificTripDining.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -24,7 +24,7 @@ interface Place {
   photo_reference?: string;
 }
 
-const TripDetailsPage = () => {
+const DiningPage = () => {
   const { id } = useParams();
   const [trip, setTrip] = useState<Trip | null>(null);
   const [places, setPlaces] = useState<Place[]>([]);
@@ -35,7 +35,7 @@ const TripDetailsPage = () => {
 
  
 
-const TripDetailsPage = () => {
+const DiningPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -99,7 +99,7 @@ const TripDetailsPage = () => {
 
       try {
         const response = await fetch(
-          `/api/places?query=lodging+in+${encodeURIComponent(trip.location)}`
+          `/api/places?query=dining+in+${encodeURIComponent(trip.location)}`
         );
         if (!response.ok) {
           throw new Error(`Failed to fetch places: ${response.statusText}`);
@@ -213,7 +213,7 @@ const TripDetailsPage = () => {
 
        <div className={styles.sidebarButtons}>
        <Link href={`/trips/${id}`} passHref>
-         <button className={styles.currentPageButton}>
+         <button className={styles.sidebarButton}>
          <img 
             src="/Images/anotherHotel.png" 
             alt="Menu" 
@@ -223,7 +223,7 @@ const TripDetailsPage = () => {
           </button>
           </Link>
           <Link href={`/trips/${id}/dining`} passHref>
-          <button className={styles.sidebarButton}>
+          <button className={styles.currentPageButton}>
           <img 
             src="/Images/fork.png" 
             alt="Menu" 
@@ -261,7 +261,7 @@ const TripDetailsPage = () => {
           }`}
           onClick={() => handleTabChange('yourDining')}
         >
-          Your Lodging
+          Your Dining
         </button>
         <button
           className={`${styles.tabButton} ${
@@ -269,18 +269,18 @@ const TripDetailsPage = () => {
           }`}
           onClick={() => handleTabChange('diningOptions')}
         >
-          Lodging Options
+          Dining Options
         </button>
       </div>
 
       {activeTab === 'yourDining' && (
         <div className={styles.lodging}>
-          <h1>Your Lodging</h1>
+          <h1>Your Dining</h1>
           <div className={styles.cardsContainer}>
             {selectedPlaces.length > 0 ? (
               selectedPlaces.map((place, index) => (
                 <div key={index} className={styles.lodgingCard}>
-                  <h3 className={styles.cardTitle}>
+                  <h3>
                   <a
                       href={`https://www.google.com/maps/place/?q=place_id:${place.place_id}`}
                       target="_blank"
@@ -305,7 +305,7 @@ const TripDetailsPage = () => {
                 </div>
               ))
             ) : (
-              <h1 className={styles.noLodging}>No lodging places selected yet.</h1>
+              <h1 className={styles.noLodging}>No dining places selected yet.</h1>
             )}
           </div>
         </div>
@@ -313,7 +313,7 @@ const TripDetailsPage = () => {
 
       {activeTab === 'diningOptions' && (
         <div className={styles.lodging}>
-          <h1>Lodging Options in: {trip.location}</h1>
+          <h1>Dining Options in: {trip.location}</h1>
           <div className={styles.cardsContainer}>
             {loading ? (
               <p>Loading...</p>
@@ -337,7 +337,7 @@ const TripDetailsPage = () => {
                 </div>
               ))
             ) : (
-              <p>No Lodging options found.</p>
+              <p>No dining options found.</p>
             )}
           </div>
         </div>
@@ -346,5 +346,5 @@ const TripDetailsPage = () => {
   );
 };
 
-export default TripDetailsPage;
+export default DiningPage;
 

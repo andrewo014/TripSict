@@ -1,11 +1,9 @@
-
 'use client';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import styles from './specificTrip.module.css';
+import styles from './specificTripAttractions.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 interface Trip {
   id: string;
@@ -24,26 +22,14 @@ interface Place {
   photo_reference?: string;
 }
 
-const TripDetailsPage = () => {
+const AttractionsPage = () => {
   const { id } = useParams();
   const [trip, setTrip] = useState<Trip | null>(null);
   const [places, setPlaces] = useState<Place[]>([]);
   const [selectedPlaces, setSelectedPlaces] = useState<Place[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState<'yourDining' | 'diningOptions'>('yourDining');
+  const [activeTab, setActiveTab] = useState<'yourAttractions' | 'attractionOptions'>('yourAttractions');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
- 
-
-const TripDetailsPage = () => {
-  const router = useRouter();
-  const { id } = router.query;
-
-  console.log('Dynamic Route ID:', id);
-
-  return <h1>Dining Page for Trip ID: {id}</h1>;
-};
-
 
   console.log('Trip ID:', id);
 
@@ -75,9 +61,9 @@ const TripDetailsPage = () => {
   }, [id]);
 
   useEffect(() => {
-    const savedDining = localStorage.getItem('selectedDiningPlaces');
-    if (savedDining) {
-      setSelectedPlaces(JSON.parse(savedDining));
+    const savedAttractions = localStorage.getItem('selectedAttractions');
+    if (savedAttractions) {
+      setSelectedPlaces(JSON.parse(savedAttractions));
     }
   }, []);
 
@@ -86,7 +72,7 @@ const TripDetailsPage = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem('selectedDiningPlaces', JSON.stringify(selectedPlaces));
+    localStorage.setItem('selectedAttractions', JSON.stringify(selectedPlaces));
   }, [selectedPlaces]);
 
   useEffect(() => {
@@ -99,7 +85,7 @@ const TripDetailsPage = () => {
 
       try {
         const response = await fetch(
-          `/api/places?query=lodging+in+${encodeURIComponent(trip.location)}`
+          `/api/places?query=points+of+interest+in+${encodeURIComponent(trip.location)}`
         );
         if (!response.ok) {
           throw new Error(`Failed to fetch places: ${response.statusText}`);
@@ -135,17 +121,17 @@ const TripDetailsPage = () => {
     }
   }, [trip, selectedPlaces]);
 
-  const handleAddToYourDining = (place: Place) => {
+  const handleAddToYourAttractions = (place: Place) => {
     setSelectedPlaces((prev) => [...prev, place]);
     setPlaces((prev) => prev.filter((p) => p.place_id !== place.place_id));
   };
 
-  const handleRemoveFromYourDining = (place: Place) => {
+  const handleRemoveFromYourAttractions = (place: Place) => {
     setSelectedPlaces((prev) => prev.filter((p) => p.place_id !== place.place_id));
     setPlaces((prev) => [...prev, place]);
   };
 
-  const handleTabChange = (tab: 'yourDining' | 'diningOptions') => {
+  const handleTabChange = (tab: 'yourAttractions' | 'attractionOptions') => {
     setActiveTab(tab);
   };
 
@@ -184,7 +170,7 @@ const TripDetailsPage = () => {
       </header>
 
       <div>
-      <div className={styles.tripTitleDisplay}>
+        <div className={styles.tripTitleDisplay}>
           <div className={styles.leftInformation}>
             <h1 className={styles.leftInformationBigText}>{trip.name}</h1>
             <h4 className={styles.leftInformationLittleText}>{trip.location}</h4>
@@ -213,7 +199,7 @@ const TripDetailsPage = () => {
 
        <div className={styles.sidebarButtons}>
        <Link href={`/trips/${id}`} passHref>
-         <button className={styles.currentPageButton}>
+         <button className={styles.sidebarButton}>
          <img 
             src="/Images/anotherHotel.png" 
             alt="Menu" 
@@ -233,13 +219,13 @@ const TripDetailsPage = () => {
             </button>
             </Link>
             <Link href={`/trips/${id}/attractions`}>
-         <button className={styles.sidebarButton}>
+         <button className={styles.currentPageButton}>
          <img 
             src="/Images/laugh.png" 
             alt="Menu" 
             style={{ width: '24px', height: '24px', marginRight: '8px'  }} 
           />
-          Attractions
+          <h1>Attractions</h1>
           </button>
           </Link>
          <button className={styles.sidebarButton}>
@@ -257,31 +243,31 @@ const TripDetailsPage = () => {
       <div className={styles.tabContainer}>
         <button
           className={`${styles.tabButton} ${
-            activeTab === 'yourDining' ? styles.activeTab : ''
+            activeTab === 'yourAttractions' ? styles.activeTab : ''
           }`}
-          onClick={() => handleTabChange('yourDining')}
+          onClick={() => handleTabChange('yourAttractions')}
         >
-          Your Lodging
+          Your Attractions
         </button>
         <button
           className={`${styles.tabButton} ${
-            activeTab === 'diningOptions' ? styles.activeTab : ''
+            activeTab === 'attractionOptions' ? styles.activeTab : ''
           }`}
-          onClick={() => handleTabChange('diningOptions')}
+          onClick={() => handleTabChange('attractionOptions')}
         >
-          Lodging Options
+          Attractions Options
         </button>
       </div>
 
-      {activeTab === 'yourDining' && (
+      {activeTab === 'yourAttractions' && (
         <div className={styles.lodging}>
-          <h1>Your Lodging</h1>
+          <h1>Your Attractions</h1>
           <div className={styles.cardsContainer}>
             {selectedPlaces.length > 0 ? (
               selectedPlaces.map((place, index) => (
                 <div key={index} className={styles.lodgingCard}>
-                  <h3 className={styles.cardTitle}>
-                  <a
+                  <h3>
+                    <a
                       href={`https://www.google.com/maps/place/?q=place_id:${place.place_id}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -301,28 +287,27 @@ const TripDetailsPage = () => {
                   )}
                   <p className={styles.cardAddress}>{place.formatted_address}</p>
                   <p className={styles.cardRating}>Rating: {place.rating ? `${place.rating}/5 ⭐` : 'N/A'}</p>
-                  <button className={styles.addButton} onClick={() => handleRemoveFromYourDining(place)}>Remove</button>
+                  <button className={styles.addButton} onClick={() => handleRemoveFromYourAttractions(place)}>Remove</button>
                 </div>
               ))
             ) : (
-              <h1 className={styles.noLodging}>No lodging places selected yet.</h1>
+              <h1 className={styles.noLodging}>No attractions selected yet.</h1>
             )}
           </div>
         </div>
       )}
 
-      {activeTab === 'diningOptions' && (
+      {activeTab === 'attractionOptions' && (
         <div className={styles.lodging}>
-          <h1>Lodging Options in: {trip.location}</h1>
+          <h1>Attractions Options in: {trip.location}</h1>
           <div className={styles.cardsContainer}>
             {loading ? (
               <p>Loading...</p>
             ) : places.length > 0 ? (
               places.map((place, index) => (
                 <div key={index} className={styles.lodgingCard}>
-                  <h3 className={styles.cardTitle}>
-                    {place.name}</h3>
-                    {place.photo_reference ? (
+                  <h3 className={styles.cardTitle}>{place.name}</h3>
+                  {place.photo_reference ? (
                     <img
                       src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${place.photo_reference}&key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}
                       alt={place.name}
@@ -333,11 +318,11 @@ const TripDetailsPage = () => {
                   )}
                   <p className={styles.cardAddress}>{place.formatted_address}</p>
                   <p className={styles.cardRating}>Rating: {place.rating ? `${place.rating}/5 ⭐` : 'N/A'}</p>
-                  <button className={styles.addButton} onClick={() => handleAddToYourDining(place)}>Add</button>
+                  <button className={styles.addButton} onClick={() => handleAddToYourAttractions(place)}>Add</button>
                 </div>
               ))
             ) : (
-              <p>No Lodging options found.</p>
+              <p>No attractions options found.</p>
             )}
           </div>
         </div>
@@ -346,5 +331,4 @@ const TripDetailsPage = () => {
   );
 };
 
-export default TripDetailsPage;
-
+export default AttractionsPage;

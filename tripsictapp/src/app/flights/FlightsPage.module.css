@@ -1,0 +1,319 @@
+.flightsPage {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(240, 240, 240); /* Light gray background */
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    color: black;
+    height: auto;
+  }
+  
+  .flightsPage ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .flightItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .flightItem h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: #007acc;
+  }
+  
+  .flightItem p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .flightItem button {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007acc;
+    color: white;
+    transition: background-color 0.3s;
+  }
+  
+  .flightItem button:hover {
+    background-color: #005f9c;
+  }
+  
+  .flightItem .buttonGroup {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    padding: 10px;
+    background-color: #bbb;
+    border-bottom: solid;
+    flex-direction: row;
+}
+
+.titleButton {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sideBarLogo {
+    border-radius: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .sideBarTitle {
+    padding-left: 8px;
+    font-weight: bold;
+  }
+
+  .sideBarWork {
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Sidebar toggle button styling */
+.sidebarToggleButton {
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    height: 75px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 5%;
+    width: 40px;
+    color: black;
+    flex-shrink: 0;
+    padding-left: 5px
+  }
+  
+  /* Sidebar styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hidden by default */
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    transition: left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  
+  .sidebar.open {
+    left: 0; /* Slide into view when open */
+  }
+  
+  /* Close button styling */
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  /* Sidebar buttons container */
+  .sidebarButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Space between buttons */
+    text-align: center;
+    margin-top: -100px;
+    border-top: solid white;
+  }
+  
+  /* Sidebar button styling */
+  .sidebarButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 5%;
+    margin-right: 10px;
+    color: white;
+    flex-shrink: 0;
+    margin-top: 10px;
+    display: flex;
+  }
+
+  .currentPageButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 5%;
+    margin-right: 10px;
+    color: white;
+    flex-shrink: 0;
+    margin-top: 10px;
+    display: flex;
+    background-color: #007acc;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .currentPageButton::after {
+    content: ''; /* Pseudo-element content must be set to something, even an empty string */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -40px; /* Extend the background 20px beyond the right side */
+    left: 0; /* Keep aligned with the left edge of the button */
+    background-color: #005fa3; /* Slightly darker shade for the extension */
+    border-radius: 5%; /* Match the button's border radius */
+    z-index: 0; /* Ensure it appears behind the button's content */
+}
+
+.currentPageButton img {
+  z-index: 1; /* Ensure the icon appears above the extended background */
+  position: relative; /* Ensure it remains on top */
+}
+
+.currentPageButton p {
+  z-index: 1; /* Ensure the text appears above the extended background */
+  position: relative;
+}
+
+  .sidebarButton:hover {
+    text-decoration: underline;
+  }
+  
+  .hamburgerTitle {
+    display: flex;
+    align-items: center;
+    font-size: 38px;
+    font-weight: bold;
+  }
+
+  .headerButtonStyle {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    height: 50px;
+    border-radius: 5%;
+    margin-right: 10px;
+    width: auto;
+    background-color: #D0EFFF;
+    color: black;
+    color: black;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .logoImage {
+    border-radius: 50%;
+    margin-left: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+  }
+
+  .pageHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: #bbb;
+    border-bottom: solid;
+    position: relative;
+  }
+  
+  .Title {
+    font-size: 38px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .logoImage {
+    border-radius: 50%;
+    margin-left: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .headerButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .titleButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .addFlightButton {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #D0EFFF;
+    border-radius: 5%;
+  }
+
+  .flightContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    min-height: 100vh;
+    width: 85%;
+    margin: 10px auto 0;
+  }
+
+  .title {
+    font-size: 2.5em;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  .hamburgerTitle {
+    display: flex;
+    align-items: center;
+    font-size: 38px;
+    font-weight: bold;
+  }

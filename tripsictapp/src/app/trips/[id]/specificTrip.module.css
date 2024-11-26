@@ -1,208 +1,481 @@
 .pageContainer {
-    background-color: white; 
-    min-height: 100vh; 
-    color: black;
-  }
+  background-color: white; 
+  min-height: 100vh; 
+  color: black;
+}
 
-  .pageHeader {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-    background-color: #bbb;
-    border-bottom: solid;
-    position: relative;
-  }
+.pageHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #bbb;
+  border-bottom: solid;
+  position: relative;
+}
 
-  .Title {
-    font-size: 38px;
-    font-weight: bold;
-    color: black;
-  }
+.Title {
+  font-size: 38px;
+  font-weight: bold;
+  color: black;
+}
 
-  .logoImage {
-    border-radius: 50%;
-    margin-left: 10px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50%;
-  }
+.logoImage {
+  border-radius: 50%;
+  margin-left: 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
 
-  .headerButtons {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-  }
+.headerButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
 
-  .tripTitleDisplay {
-    display: flex;
-    width: 90%; /* Make the width relative to the page, e.g., 90% */
-    max-width: 1400px; /* Set a max width for larger screens */
-    box-sizing: border-box;
-    color: white; 
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 1;
-    overflow: hidden;
-    height: 150px;
-    position: relative;
-    margin-top: 30px;
-    margin-left: auto; 
-    margin-right: auto; 
-    border-radius: 10px; 
-    flex-direction: row;
-    justify-content: space-between;
-    padding-right: 20px;
-    align-items: center;
-  }
-  
-  .tripTitleDisplay::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-size: cover;
-    background-position: center;
-    filter: blur(10px);
-    opacity: 1.0;
-    z-index: -1;
-    border-radius: 10px;
-    background-image: url('/Images/anotherMountain.jpg');
-  }
-  
-  .leftInformation {
-    display: flex;
-    flex-direction: column;
-  }
+.tripTitleDisplay {
+  display: flex;
+  width: 90%; /* Make the width relative to the page, e.g., 90% */
+  max-width: 1400px; /* Set a max width for larger screens */
+  box-sizing: border-box;
+  color: white; 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1;
+  overflow: hidden;
+  height: 150px;
+  position: relative;
+  margin-top: 30px;
+  margin-left: auto; 
+  margin-right: auto; 
+  border-radius: 10px; 
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 20px;
+  align-items: center;
+}
 
-  .leftInformationLittleText {
-    padding-left: 10px;
-    font-size: 20px;
-    color: lightgray;
-    justify-content: flex-end;
-    margin-bottom: 10px;
-  }
+.tripTitleDisplay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  opacity: 1.0;
+  z-index: -1;
+  border-radius: 10px;
+  background-image: url('/Images/anotherMountain.jpg');
+}
 
-  .leftInformationBigText {
-    padding-left: 10px;
-    font-size: 50px;
-    justify-content: flex-end;
-    margin-bottom: -10px;
-  }
+.leftInformation {
+  display: flex;
+  flex-direction: column;
+}
 
-  .leftInformationDescription {
-    padding-left: 10px;
-    font-size: 15px;
-    color: lightgrey;
-  }
+.leftInformationLittleText {
+  padding-left: 10px;
+  font-size: 20px;
+  color: lightgray;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
 
-  .headerTripDate {
-    color: white;
-    padding: 5px 10px;
-    font-size: 70px;
-    cursor: pointer;
-    border-radius: 4px;
-    border: none;
-    height: 50px;
-    align-items: center;
-    display: flex;
-  }
+.leftInformationBigText {
+  padding-left: 10px;
+  font-size: 50px;
+  justify-content: flex-end;
+  margin-bottom: -10px;
+}
 
-  .headerButtonStyle {
-    padding: 10px 20px;
-    font-size: 1em;
-    border: none;
-    cursor: pointer;
-    height: 50px;
-    border-radius: 5%;
-    margin-right: 10px;
-    width: auto;
-    background-color: #D0EFFF;
-    color: black;
-    flex-shrink: 0;
-    text-align: center;
-  }
+.leftInformationDescription {
+  padding-left: 10px;
+  font-size: 15px;
+  color: lightgrey;
+}
 
-  .yourLodging {
-    display: flex;
-    flex-direction: column;
-    border-bottom: solid;
-    font-size: 2.5em;
-    margin-top: 40px;
-  }
+.headerTripDate {
+  color: white;
+  padding: 5px 10px;
+  font-size: 70px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  height: 50px;
+  align-items: center;
+  display: flex;
+}
 
-  .lodging {
-    display: flex;
-    flex-direction: column;
-    font-size: 2.5em;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+.headerButtonStyle {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  height: 50px;
+  border-radius: 5%;
+  margin-right: 10px;
+  width: auto;
+  background-color: #D0EFFF;
+  color: black;
+  flex-shrink: 0;
+  text-align: center;
+}
 
-  .lodgingCard {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 16px;
-    width: auto;
-    height: 300px;
-    background-color: #D0EFFF;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    pointer-events: none;
-    margin-bottom: 20px;
-  }
-  
-  .cardTitle {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
-  
-  .cardAddress {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 8px;
-  }
-  
-  .cardRating {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-  }
+.yourLodging {
+  display: flex;
+  flex-direction: column;
+  border-bottom: solid;
+  font-size: 2.5em;
+  margin-top: 40px;
+}
 
-  .topBanner {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 15px;
-    font-size: 15px;
-    font-weight: bold;
-    align-self: flex-start;
-    border-radius: 4px;
-  }
+.lodging {
+  display: flex;
+  flex-direction: column;
+  font-size: 2.5em;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-items: center;
+  background-color: #D0EFFF;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
 
-  .bottomInfo {
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 15px;
-    text-align: left;
-    width: 100%;
-    font-size: 15px;
+.lodgingCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: auto;
+  height: 450px;
+  background-color: #D0EFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.cardAddress {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.cardRating {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.topBanner {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: bold;
+  align-self: flex-start;
+  border-radius: 4px;
+}
+
+.bottomInfo {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 15px;
+  text-align: left;
+  width: 100%;
+  font-size: 15px;
 }
 
 .lodgingTitle {
-    border-bottom: solid;
-    max-width: 50%;
-    margin-bottom: 20px;
+  display: flex;
+  border-bottom: solid;
+  max-width: 50%;
+  margin-bottom: 20px;
 }
 
 .loading {
-    font-size: larger;
-    color: lightgrey;
+  font-size: larger;
+  color: lightgrey;
+}
+
+.removeButton {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #FF6347;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.removeButton:hover {
+  background-color: #cc4a39;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.lodgingCard {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 300px;
+  position: relative;
+}
+
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.cardAddress {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.cardRating {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.addButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.addButton:hover {
+  background-color: #0056b3;
+}
+
+.yourLodging {
+  margin-top: 32px;
+}
+
+.noLodging {
+  color: gray;
+  font-size: 20px;
+}
+
+.cardContainer {
+  display: flex;
+  align-items: center;
+}
+
+.placeImage {
+  width: 100%; /* Makes the image fill the width of the card */
+  height: auto; /* Maintains aspect ratio */
+  max-height: 200px; /* Ensures the image does not exceed a certain height */
+  object-fit: cover; /* Ensures the image covers the space without distortion */
+  border-radius: 8px; /* Optional: Add rounded corners to match the card's style */
+}
+
+
+.noPhotoText {
+  font-size: 12px;
+  color: #888;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.tabContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tabButton {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+
+.activeTab {
+  background-color: #007bff;
+  font-weight: bold;
+}
+
+.tabContent {
+  margin-top: 20px;
+}
+
+.sideBarLogo {
+  border-radius: 50%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sideBarTitle {
+  padding-left: 8px;
+  font-weight: bold;
+}
+
+.sideBarWork {
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar toggle button styling */
+.sidebarToggleButton {
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  height: 75px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 5%;
+  width: 40px;
+  color: black;
+  flex-shrink: 0;
+  padding-left: 5px
+}
+
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Hidden by default */
+  width: 200px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.sidebar.open {
+  left: 0; /* Slide into view when open */
+}
+
+/* Close button styling */
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Sidebar buttons container */
+.sidebarButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Space between buttons */
+  text-align: center;
+  margin-top: -100px;
+  border-top: solid white;
+}
+
+/* Sidebar button styling */
+.sidebarButton {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 5%;
+  margin-right: 10px;
+  color: white;
+  flex-shrink: 0;
+  margin-top: 10px;
+  display: flex;
+}
+
+.currentPageButton {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 5%;
+  margin-right: 10px;
+  color: white;
+  flex-shrink: 0;
+  margin-top: 10px;
+  display: flex;
+  background-color: #007acc;
+  position: relative;
+  z-index: 1;
+}
+
+.currentPageButton::after {
+  content: ''; /* Pseudo-element content must be set to something, even an empty string */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -40px; /* Extend the background 20px beyond the right side */
+  left: 0; /* Keep aligned with the left edge of the button */
+  background-color: #005fa3; /* Slightly darker shade for the extension */
+  border-radius: 5%; /* Match the button's border radius */
+  z-index: 0; /* Ensure it appears behind the button's content */
+}
+
+.currentPageButton img {
+z-index: 1; /* Ensure the icon appears above the extended background */
+position: relative; /* Ensure it remains on top */
+}
+
+.currentPageButton h1 {
+z-index: 1; /* Ensure the text appears above the extended background */
+position: relative;
+}
+
+.sidebarButton:hover {
+  text-decoration: underline;
+}
+
+.titleButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
