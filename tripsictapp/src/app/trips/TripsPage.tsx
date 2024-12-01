@@ -7,7 +7,7 @@ import styles from "./Trip.module.css";
 import Link from "next/link";
 import Dashboard from "./dashboard";
 import { SessionProvider, useSession } from "next-auth/react";
-import LogoutButton from "./LogOutButton"; // Import the reusable LogoutButton
+import LogoutButton from "./LogOutButton"; 
 
 interface Trip {
   id: string;

@@ -1,4 +1,4 @@
-"use client"; // Ensure client-side rendering
+"use client"; 
 
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";

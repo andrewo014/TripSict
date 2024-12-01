@@ -1,7 +1,7 @@
-// pages/tripsWrapperPage.tsx
+
 import React from "react";
 import { SessionProvider } from "next-auth/react";
-import TripsPage from "./TripsPage"; // Adjust the import path if necessary
+import TripsPage from "./TripsPage"; 
 
 const TripsWrapperPage: React.FC = () => {
   return (

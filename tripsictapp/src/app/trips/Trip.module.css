@@ -1,4 +1,4 @@
-/* Main Container */
+
 .tripPageContainer {
     color: black;
     display: flex;
@@ -59,15 +59,6 @@
     justify-content: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
-    /*
-    display: flex;
-    text-align: left;
-    margin: 10px auto 0;
-    max-width: 1200px;
-    margin-left: auto; 
-    margin-right: auto; 
-    width: 90%;
-    */
   }
   
   .welcome {
@@ -193,13 +184,13 @@
     margin-top: 20px;
   }
   
-  /* Trip Form Styling */
+
 .tripForm {
     width: 100%;
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f9f9f9; /* Light background for form */
+    background-color: #f9f9f9; 
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -289,7 +280,7 @@
     flex-direction: column;
   }
 
-  /* Sidebar toggle button styling */
+  
 .sidebarToggleButton {
     font-size: 1em;
     border: none;
@@ -303,11 +294,11 @@
     padding-left: 5px
   }
   
-  /* Sidebar styling */
+
 .sidebar {
     position: fixed;
     top: 0;
-    left: -250px; /* Hidden by default */
+    left: -250px; 
     width: 200px;
     height: 100%;
     background-color: #333;
@@ -322,10 +313,10 @@
   }
   
   .sidebar.open {
-    left: 0; /* Slide into view when open */
+    left: 0; 
   }
   
-  /* Close button styling */
+
   .closeButton {
     position: absolute;
     top: 10px;
@@ -337,17 +328,17 @@
     cursor: pointer;
   }
   
-  /* Sidebar buttons container */
+
   .sidebarButtons {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Space between buttons */
+    gap: 30px; 
     text-align: center;
     margin-top: -100px;
     border-top: solid white;
   }
   
-  /* Sidebar button styling */
+
   .sidebarButton {
     padding: 10px 20px;
     font-size: 1em;
@@ -380,24 +371,24 @@
   }
   
   .currentPageButton::after {
-    content: ''; /* Pseudo-element content must be set to something, even an empty string */
+    content: ''; 
     position: absolute;
     top: 0;
     bottom: 0;
-    right: -40px; /* Extend the background 20px beyond the right side */
-    left: 0; /* Keep aligned with the left edge of the button */
-    background-color: #005fa3; /* Slightly darker shade for the extension */
-    border-radius: 5%; /* Match the button's border radius */
-    z-index: 0; /* Ensure it appears behind the button's content */
+    right: -40px; 
+    left: 0; 
+    background-color: #005fa3; 
+    border-radius: 5%; 
+    z-index: 0; 
 }
 
 .currentPageButton img {
-  z-index: 1; /* Ensure the icon appears above the extended background */
-  position: relative; /* Ensure it remains on top */
+  z-index: 1; 
+  position: relative; 
 }
 
 .currentPageButton h1 {
-  z-index: 1; /* Ensure the text appears above the extended background */
+  z-index: 1; 
   position: relative;
 }
 
@@ -434,8 +425,8 @@
 
 .myDashboard {
   display: flex;
-  width: 90%; /* Make the width relative to the page, e.g., 90% */
-  max-width: 1400px; /* Set a max width for larger screens */
+  width: 90%; 
+  max-width: 1400px; 
   box-sizing: border-box;
   color: white; 
   background-size: cover;
@@ -541,12 +532,12 @@
 .headerActions {
   display: flex;
   align-items: center;
-  gap: 15px; /* Adjust the spacing between the bell icon and "Log out" button */
+  gap: 15px; 
 }
 
 .bellContainer {
   position: relative;
-  display: inline-block; /* Ensures the badge is positioned relative to the bell icon */
+  display: inline-block;
   align-items: flex-start;
 }
 
@@ -556,7 +547,7 @@
   cursor: pointer;
   position: relative;
   outline: none;
-  padding: 0; /* Remove any extra padding around the button */
+  padding: 0; 
 }
 
 .bellImage {
@@ -566,8 +557,8 @@
 
 .notificationBadge {
   position: absolute;
-  top: -5px; /* Adjust to position the badge above the bell */
-  right: -5px; /* Adjust to align the badge to the top-right corner of the bell */
+  top: -5px; 
+  right: -5px;
   background-color: red;
   color: white;
   font-size: 12px;
@@ -581,8 +572,8 @@
 
 .alertBox {
   position: absolute;
-  top: 40px; /* Aligns the box below the bell */
-  right: 0px; /* Keeps the box aligned with the bell icon */
+  top: 40px; 
+  right: 0px; 
   width: 300px;
   background: white;
   border: 1px solid #ccc;

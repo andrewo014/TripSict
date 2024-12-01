@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, ReactNode } from 'react';
-import { useSession } from 'next-auth/react'; // Importing useSession hook
+import { useSession } from 'next-auth/react'; 
 import FlightForm from './FlightForm';
 import styles from './FlightsPage.module.css';
 import Image from 'next/image';
@@ -18,7 +18,7 @@ interface Flight {
 }
 
 const FlightsPage: React.FC = () => {
-  const { data: session } = useSession(); // Get session data
+  const { data: session } = useSession(); 
   const [flights, setFlights] = useState<Flight[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [editFlight, setEditFlight] = useState<Flight | null>(null);
@@ -34,7 +34,7 @@ const FlightsPage: React.FC = () => {
   };
 
   const addFlightHandler = (flight: Flight) => {
-    if (!session) return; // If not logged in, do nothing
+    if (!session) return; 
 
     if (editFlight) {
       const updatedFlights = flights.map((f) =>
@@ -44,7 +44,7 @@ const FlightsPage: React.FC = () => {
       setFlights(updatedFlights);
       setEditFlight(null);
     } else {
-      const { id: _, ...flightWithoutId } = flight; // Exclude id if it exists
+      const { id: _, ...flightWithoutId } = flight; 
       const newFlight = { id: Math.random().toString(), ...flightWithoutId };
       const updatedFlights = [...flights, newFlight];
       localStorage.setItem('flights', JSON.stringify(updatedFlights));
