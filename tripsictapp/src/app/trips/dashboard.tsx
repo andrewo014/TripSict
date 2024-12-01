@@ -1,6 +1,7 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import styles from "./Trip.module.css"; // Import your styles
+
 const formatDate = (date: Date): string => {
   const day = date.getDate();
   const suffix =
@@ -15,18 +16,22 @@ const formatDate = (date: Date): string => {
   const year = date.getFullYear(); // Get year
   return `${month} ${day}${suffix} ${year}`;
 };
+
 const Dashboard: React.FC = () => {
   const { data: session } = useSession(); // Use useSession hook
-  const [name, setName] = useState<string | undefined>(undefined);
+  const [name, setName] = useState<string>("Guest"); // Default to 'Guest'
+
   useEffect(() => {
     if (session) {
-      console.log("This is the session" + session);
-      const userName = session?.user?.name ?? "Guest"; // if the user name is null then use Guest as the name
-      setName(userName); // Set the logged-in user's name
+      console.log("This is the session: ", session);
+      const userName = session?.user?.name ?? "Guest"; // If the user name is null, use 'Guest'
+      setName(userName); // Set the logged-in user's name or 'Guest'
     }
   }, [session]);
+
   const today = new Date();
   const formattedDate = formatDate(today);
+
   return (
     <div className={styles.myDashboard}>
       <div className={styles.welcomeBack}>
@@ -37,4 +42,5 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
+
 export default Dashboard;
