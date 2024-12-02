@@ -47,6 +47,21 @@ const TripsPage: React.FC = () => {
   const formattedDate = formatDate(today);
 
   useEffect(() => {
+    const checkAlerts = () => {
+      const currentDate = new Date();
+      const upcomingAlert = trips.some((trip) => {
+        const tripDate = new Date(trip.date);
+        const diffTime = tripDate.getTime() - currentDate.getTime();
+        const diffDays = diffTime / (1000 * 60 * 60 * 24); // Convert milliseconds to days
+        return diffDays >= 0 && diffDays <= 7; // Check if trip is within a week
+      });
+      setHasAlert(upcomingAlert);
+    };
+    checkAlerts();
+  }, [trips]);
+
+
+  useEffect(() => {
     const savedTrips = JSON.parse(localStorage.getItem("trips") || "[]");
     setTrips(savedTrips);
   }, []);
@@ -54,6 +69,28 @@ const TripsPage: React.FC = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (
+        alertBoxRef.current &&
+        !alertBoxRef.current.contains(target) && // Click is outside the alert box
+        bellIconRef.current &&
+        !bellIconRef.current.contains(target) // Click is also outside the bell icon
+      ) {
+        setShowAlertBox(false); // Close the alert box
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   const toggleAlertBox = () => {
     setShowAlertBox((prev) => {
@@ -101,6 +138,8 @@ const TripsPage: React.FC = () => {
       }, 0);
     }
   };
+
+  
 
   const toggleFormVisibility = () => {
     if (editTrip) {
@@ -163,6 +202,45 @@ const TripsPage: React.FC = () => {
                 )}
               </button>
             </div>
+
+                {/* Alert Box */}
+            {showAlertBox && (
+              <div ref={alertBoxRef} className={styles.alertBox}>
+                <h3>Notifications</h3>
+                {trips.filter((trip) => {
+                  const tripDate = new Date(trip.date);
+                  const diffTime = tripDate.getTime() - today.getTime();
+                  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                  return diffDays >= 0 && diffDays <= 7; // Filter trips within the next 7 days
+                }).length > 0 ? (
+                  trips.map((trip) => {
+                    const tripDate = new Date(trip.date);
+                    const diffTime = tripDate.getTime() - today.getTime();
+                    const diffDays = Math.ceil(
+                      diffTime / (1000 * 60 * 60 * 24)
+                    );
+                    if (diffDays >= 0 && diffDays <= 7) {
+                      return (
+                        <h1
+                          key={trip.id}
+                          className={styles.notificationMessage}
+                        >
+                          <strong>{trip.name}</strong> on{" "}
+                          <strong>{trip.date}</strong> is approaching!
+                        </h1>
+                      );
+                    }
+                    return null;
+                  })
+                ) : (
+                  <p>You have no notifications.</p>
+                )}
+              </div>
+            )}
+
+
+
+
             <LogoutButton />
           </div>
         </header>
