@@ -87,7 +87,7 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onAddUser }) => {
     <div className={styles.options}>
         <div className={styles.pageTitle}>TripSict</div>
         <nav className={styles.nav}>
-          <a href="#">Get Inspired</a>
+          <Link href="misc-home/getInspired">Get Inspired</Link>
           <a href="#">How it Works</a>
           <Image 
           src="/Images/triptactLogo.jpg"
@@ -96,7 +96,7 @@ const SignUpPage: React.FC<SignUpPageProps> = ({ onAddUser }) => {
           height={80}
           className={styles.logoImage}
         />
-          <a href="#">Travel Planning Tips</a>
+          <Link href="misc-home/tips">Travel Planning Tips</Link>
           <a href="/signup">Get Started</a>
         </nav>
           <Link href="/" passHref>

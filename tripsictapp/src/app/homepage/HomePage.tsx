@@ -30,7 +30,7 @@ export default function Homepage() {
         <div className={styles.options}>
         <div className={styles.pageTitle}>TripSict</div>
         <nav className={styles.nav}>
-          <Link href="getInspired">
+          <Link href="misc-home/getInspired">
             <button>Get Inspired</button>
           </Link>
           <a href="#">How it Works</a>
@@ -41,7 +41,7 @@ export default function Homepage() {
           height={80}
           className={styles.logoImage}
         />
-          <Link href="tips">
+          <Link href="misc-home/tips">
             <button>Travel Planning Tips</button>
           </Link>
           <a href="/signup">Get Started</a>
@@ -294,17 +294,17 @@ className={styles.tripPreview}
 
       <footer className={styles.bottom}>
         <div className={styles.footerContent}>
-          <Link href="about">
+          <Link href="misc-home/about">
         <button className={styles.footerButtons}>About Tripsict</button>
         </Link>
-        <Link href="founders">
+        <Link href="misc-home/founders">
         <button className={styles.footerButtons}>Founders</button>
         </Link>
         <Image src="/Images/triptactLogo.jpg" alt="Triptact Photo Log" width={80} height={80} className={styles.logoImage} />
-        <Link href="helpCenter">
+        <Link href="misc-home/helpCenter">
         <button className={styles.footerButtons}>Help Center</button>
         </Link>
-        <Link href="reportIssue">
+        <Link href="misc-home/reportIssue">
         <button className={styles.footerButtons}>Report an issue</button>
         </Link>
         </div>
