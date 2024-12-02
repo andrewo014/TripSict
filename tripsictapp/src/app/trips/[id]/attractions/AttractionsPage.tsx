@@ -5,6 +5,7 @@ import styles from './specificTripAttractions.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import LogoutButton from '../../LogOutButton';
+import { useSession } from 'next-auth/react';
 
 interface Trip {
   id: string;
@@ -31,6 +32,8 @@ const AttractionsPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<'yourAttractions' | 'attractionOptions'>('yourAttractions');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { data: session } = useSession();
+
 
   console.log('Trip ID:', id);
 
@@ -286,7 +289,8 @@ const AttractionsPage = () => {
                   )}
                   <p className={styles.cardAddress}>{place.formatted_address}</p>
                   <p className={styles.cardRating}>Rating: {place.rating ? `${place.rating}/5 ⭐` : 'N/A'}</p>
-                  <button className={styles.addButton} onClick={() => handleRemoveFromYourAttractions(place)}>Remove</button>
+                  <button className={styles.addButton} onClick={() => handleRemoveFromYourAttractions(place)} disabled={!session}>Remove
+                  </button>
                 </div>
               ))
             ) : (
@@ -317,7 +321,7 @@ const AttractionsPage = () => {
                   )}
                   <p className={styles.cardAddress}>{place.formatted_address}</p>
                   <p className={styles.cardRating}>Rating: {place.rating ? `${place.rating}/5 ⭐` : 'N/A'}</p>
-                  <button className={styles.addButton} onClick={() => handleAddToYourAttractions(place)}>Add</button>
+                  <button className={styles.addButton} onClick={() => handleAddToYourAttractions(place)} disabled={!session}>Add </button>
                 </div>
               ))
             ) : (

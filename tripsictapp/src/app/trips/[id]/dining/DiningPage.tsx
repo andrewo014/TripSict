@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import LogoutButton from '../../LogOutButton';
+import { useSession } from 'next-auth/react';
 
 interface Trip {
   id: string;
@@ -33,6 +34,8 @@ const DiningPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<'yourDining' | 'diningOptions'>('yourDining');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { data: session } = useSession();
+
 
  
 
@@ -300,7 +303,8 @@ const DiningPage = () => {
                   )}
                   <p className={styles.cardAddress}>{place.formatted_address}</p>
                   <p className={styles.cardRating}>Rating: {place.rating ? `${place.rating}/5 ⭐` : 'N/A'}</p>
-                  <button className={styles.addButton} onClick={() => handleRemoveFromYourDining(place)}>Remove</button>
+                  <button className={styles.addButton} onClick={() => handleRemoveFromYourDining(place)} disabled={!session}>Remove
+                  </button>
                 </div>
               ))
             ) : (
@@ -332,7 +336,7 @@ const DiningPage = () => {
                   )}
                   <p className={styles.cardAddress}>{place.formatted_address}</p>
                   <p className={styles.cardRating}>Rating: {place.rating ? `${place.rating}/5 ⭐` : 'N/A'}</p>
-                  <button className={styles.addButton} onClick={() => handleAddToYourDining(place)}>Add</button>
+                  <button className={styles.addButton} onClick={() => handleAddToYourDining(place)} disabled={!session}>Add </button>
                 </div>
               ))
             ) : (
