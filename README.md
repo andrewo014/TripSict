@@ -25,12 +25,14 @@ TripSict is a **travel planning web app** designed to help users organize and tr
 - **UI Styling:** Styled Components
 
 ## Getting Started
-Install Dependencies: $ npm install
-Run: $ npm run dev
+- **Install Dependencies:** 
+  - $ npm install
+- **Run:**
+  - $ npm run dev
 
-Set up API keys in .env folder
-NEXT_PUBLIC_GOOGLE_API_KEY=your_api_key_here
-AUTH_SECRET=
-MONGODB_URI= 
-NEXTAUTH_URL=
+- **Set up API keys in .env folder**
+  - NEXT_PUBLIC_GOOGLE_API_KEY=your_api_key_here
+  - AUTH_SECRET=
+  - MONGODB_URI= 
+  - NEXTAUTH_URL=
 
